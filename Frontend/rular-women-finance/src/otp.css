@@ -1,0 +1,122 @@
+.otp-container {
+  max-width: 400px;
+}
+
+.back-button {
+  border: 0;
+
+  background: transparent;
+
+  color: #5b564c;
+
+  display: flex;
+
+  gap: 6px;
+
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.change-number {
+  border: 0;
+
+  background: transparent;
+
+  color: #1f3a3d;
+
+  font-weight: 600;
+
+  display: block;
+
+  margin-bottom: 24px;
+
+  text-decoration: underline;
+}
+
+.otp-icon {
+  width: 56px;
+
+  height: 56px;
+
+  border-radius: 50%;
+
+  background: #f3ecdc;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.auth-subtitle strong {
+  color: #22201b;
+}
+
+.otp-section {
+  margin-bottom: 24px;
+}
+
+.otp-inputs {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 8px;
+}
+
+.otp-box {
+  width: 52px;
+
+  height: 56px;
+
+  border: 1px solid #e4dac4;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  font-size: 22px;
+
+  font-weight: 600;
+
+  outline: none;
+}
+
+.otp-box:focus {
+  box-shadow:
+    0 0 0 3px
+    rgba(31, 58, 61, 0.12);
+}
+
+.resend {
+  text-align: center;
+
+  color: #5b564c;
+
+  font-size: 14px;
+
+  margin-top: 20px;
+}
+
+.resend button {
+  border: 0;
+
+  background: transparent;
+
+  color: #1f3a3d;
+
+  font-weight: 600;
+
+  text-decoration: underline;
+}
+
+@media (max-width: 420px) {
+
+  .otp-box {
+    width: 44px;
+  }
+}

@@ -1,0 +1,104 @@
+.business-info-page {
+  min-height: 100vh;
+  background: #fbf6ec;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.business-info-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.business-info-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.business-info-heading h1 {
+  font-family:
+    "Fraunces",
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  color: #1f3a3d;
+  font-size: 30px;
+
+  margin: 0 0 8px;
+}
+
+.business-info-heading p {
+  color: #5b564c;
+  font-size: 14px;
+}
+
+.business-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.business-info-card {
+  background: #ffffff;
+
+  border: 1px solid #e4dac4;
+  border-radius: 16px;
+
+  padding: 22px;
+
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.business-info-card:hover {
+  box-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.06);
+}
+
+.business-info-icon {
+  min-width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #f3ecdc;
+  color: #c98a2b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.business-info-card h2 {
+  font-family:
+    "Fraunces",
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  color: #1f3a3d;
+  font-size: 19px;
+
+  margin: 2px 0 7px;
+}
+
+.business-info-card p {
+  color: #5b564c;
+  font-size: 14px;
+  line-height: 1.6;
+
+  margin: 0;
+}
+
+@media (max-width: 550px) {
+
+  .business-info-page {
+    padding: 30px 18px;
+  }
+
+  .business-info-card {
+    padding: 18px;
+  }
+}

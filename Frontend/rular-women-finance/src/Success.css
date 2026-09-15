@@ -1,0 +1,97 @@
+.success-page {
+  min-height: 100vh;
+
+  background: #fbf6ec;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 24px;
+}
+
+.success-card {
+  width: 100%;
+
+  max-width: 400px;
+
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+
+  height: 64px;
+
+  margin: 0 auto 24px;
+
+  border-radius: 50%;
+
+  background: #e1a94c;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.success-card h2 {
+  color: #22201b;
+
+  font-family:
+    "Fraunces",
+    serif;
+
+  font-size: 28px;
+
+  margin: 0;
+}
+
+.success-card p {
+  color: #5b564c;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin: 8px auto 28px;
+}
+
+.success-button {
+  width: 100%;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  background: #1f3a3d;
+
+  color: #fbf6ec;
+
+  font-weight: 600;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.dashboard-message {
+  border: 1px solid #e4dac4;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  color: #5b564c;
+
+  font-size: 14px;
+}

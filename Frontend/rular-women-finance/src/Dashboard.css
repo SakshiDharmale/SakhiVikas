@@ -1,0 +1,141 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #fbf6ec;
+  color: #22201b;
+  padding: 50px 24px;
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  max-width: 920px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.dashboard-brand {
+  color: #c98a2b;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.dashboard-header h1 {
+  font-family: "Fraunces", "Playfair Display", Georgia, serif;
+  color: #1f3a3d;
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+
+.dashboard-subtitle {
+  color: #5b564c;
+  font-size: 15px;
+  margin: 0;
+}
+
+.dashboard-content {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  );
+  gap: 20px;
+}
+
+.dashboard-card {
+  position: relative;
+  min-height: 190px;
+  border: 1px solid #e4dac4;
+  border-radius: 16px;
+  padding: 26px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.07);
+
+  border-color: #c98a2b;
+}
+
+.dashboard-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  background: #f3ecdc;
+  color: #1f3a3d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 22px;
+}
+
+.dashboard-card-content h2 {
+  font-family:
+    "Fraunces",
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 20px;
+  color: #1f3a3d;
+
+  margin: 0 0 8px;
+}
+
+.dashboard-card-content p {
+  color: #5b564c;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+
+  max-width: 270px;
+}
+
+.dashboard-arrow {
+  position: absolute;
+  right: 22px;
+  top: 24px;
+
+  color: #c98a2b;
+}
+
+@media (max-width: 600px) {
+
+  .dashboard-page {
+    padding: 35px 18px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 28px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    min-height: 160px;
+  }
+}

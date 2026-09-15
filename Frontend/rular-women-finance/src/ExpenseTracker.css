@@ -1,0 +1,244 @@
+.expense-page {
+  min-height: 100vh;
+  background: #fbf6ec;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.expense-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-back-button {
+  border: 0;
+  background: transparent;
+  color: #1f3a3d;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  padding: 0;
+  margin-bottom: 28px;
+}
+
+.expense-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.expense-heading-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  margin: 0 auto 14px;
+
+  background: #f3ecdc;
+  color: #c98a2b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expense-heading h1 {
+  font-family:
+    "Fraunces",
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  color: #1f3a3d;
+  font-size: 30px;
+
+  margin: 0 0 8px;
+}
+
+.expense-heading p {
+  color: #5b564c;
+  font-size: 14px;
+}
+
+.expense-card {
+  background: #ffffff;
+
+  border: 1px solid #e4dac4;
+  border-radius: 16px;
+
+  padding: 28px;
+}
+
+.expense-field {
+  margin-bottom: 20px;
+}
+
+.expense-field label {
+  display: block;
+
+  color: #22201b;
+  font-size: 14px;
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+.currency-input {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e4dac4;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+.currency-input span {
+  padding-left: 15px;
+
+  color: #1f3a3d;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.currency-input input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  padding: 13px 15px 13px 8px;
+
+  font-size: 16px;
+  color: #22201b;
+
+  background: transparent;
+}
+
+.currency-input:focus-within {
+  box-shadow:
+    0 0 0 3px
+    rgba(31, 58, 61, 0.12);
+}
+
+.expense-error {
+  color: #c1502e;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.calculate-button {
+  width: 100%;
+
+  border: 0;
+  border-radius: 12px;
+
+  padding: 14px;
+
+  background: #1f3a3d;
+  color: #fbf6ec;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+.calculate-button:hover {
+  background: #152a2c;
+}
+
+.savings-card {
+  margin-top: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4dac4;
+  border-radius: 16px;
+
+  padding: 25px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 10px 0;
+
+  color: #5b564c;
+  font-size: 14px;
+}
+
+.result-row strong {
+  color: #22201b;
+}
+
+.result-divider {
+  height: 1px;
+  background: #e4dac4;
+  margin: 10px 0;
+}
+
+.result-saving {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 0;
+
+  color: #1f3a3d;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.result-saving strong {
+  color: #c98a2b;
+  font-size: 22px;
+}
+
+.status-box {
+  margin-top: 15px;
+
+  background: #f3ecdc;
+  border-radius: 10px;
+
+  padding: 12px 15px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #5b564c;
+  font-size: 14px;
+}
+
+.status-box strong {
+  color: #1f3a3d;
+}
+
+@media (max-width: 600px) {
+
+  .expense-page {
+    padding: 30px 18px;
+  }
+
+  .expense-card,
+  .savings-card {
+    padding: 20px;
+  }
+
+  .expense-heading h1 {
+    font-size: 26px;
+  }
+}

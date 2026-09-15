@@ -1,0 +1,115 @@
+.auth-tabs {
+  background: #f3ecdc;
+
+  border: 1px solid #e4dac4;
+
+  border-radius: 12px;
+
+  padding: 4px;
+
+  display: flex;
+
+  margin-bottom: 28px;
+}
+
+.auth-tabs button {
+  flex: 1;
+
+  border: 0;
+
+  background: transparent;
+
+  border-radius: 8px;
+
+  padding: 9px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #22201b;
+}
+
+.auth-tabs .active-tab {
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 2px
+    rgba(0, 0, 0, 0.06);
+}
+
+.auth-title {
+  font-family:
+    "Fraunces",
+    serif;
+
+  font-size: 28px;
+
+  margin: 0;
+
+  color: #22201b;
+}
+
+.auth-subtitle {
+  color: #5b564c;
+
+  font-size: 14px;
+
+  margin: 6px 0 24px;
+}
+
+.password-field {
+  position: relative;
+
+  margin-bottom: 4px;
+}
+
+.password-toggle {
+  position: absolute;
+
+  right: 12px;
+
+  top: 37px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #1f3a3d;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.submit-space {
+  margin-top: 24px;
+}
+
+.switch-text {
+  text-align: center;
+
+  color: #5b564c;
+
+  font-size: 14px;
+
+  margin-top: 20px;
+}
+
+.switch-text button {
+  border: 0;
+
+  background: transparent;
+
+  color: #1f3a3d;
+
+  font-weight: 600;
+
+  text-decoration: underline;
+}
