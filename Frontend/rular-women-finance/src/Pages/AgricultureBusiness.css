@@ -1,0 +1,204 @@
+
+/* Main page */
+.agriculture-page {
+  min-height: 100vh;
+  padding: 28px 24px 48px;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #1F3A3D;
+  font-family: Arial, sans-serif;
+}
+
+.agriculture-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* Page heading */
+.agriculture-header {
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.agriculture-header h1 {
+  margin: 0 0 10px;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #1F3A3D;
+  text-align: left;
+}
+
+.agriculture-header p {
+  margin: 0;
+  color: #6b7472;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Six sections */
+.agriculture-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Horizontal card */
+.agriculture-card {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+  padding: 22px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.agriculture-card:first-child {
+  padding-top: 0;
+}
+
+/* Left-side image */
+.agriculture-image-wrap {
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f3efe7;
+}
+
+.agriculture-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.agriculture-card:hover .agriculture-image {
+  transform: scale(1.03);
+}
+
+/* Right-side content */
+.agriculture-content {
+  min-width: 0;
+}
+
+.agriculture-content h2 {
+  margin: 0 0 9px;
+  color: #1F3A3D;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.agriculture-description {
+  margin: 0 0 13px;
+  color: #626d69;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* YouTube learning links */
+.agriculture-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.agriculture-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: blue;
+  font-size: 14px;
+  line-height: 1.6;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.2s;
+  text-align: left;
+}
+
+.agriculture-link span {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 11px;
+}
+
+.agriculture-link:hover {
+  color: #174d40;
+  text-decoration: underline;
+}
+
+/* Goal box */
+.agriculture-goal {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid rgb(193, 190, 190);
+  border-radius: 0 5px 5px 0;
+  background: rgb(242, 241, 241);
+  color: #455852;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Tablet */
+@media (max-width: 700px) {
+  .agriculture-page {
+    padding: 22px 18px 36px;
+  }
+
+  .agriculture-card {
+    grid-template-columns: 175px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .agriculture-image-wrap {
+    height: 145px;
+  }
+
+  .agriculture-content h2 {
+    font-size: 18px;
+  }
+
+  .agriculture-description,
+  .agriculture-link {
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .agriculture-page {
+    padding: 18px 15px 30px;
+  }
+
+  .agriculture-header h1 {
+    font-size: 25px;
+  }
+
+  .agriculture-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 20px 0;
+  }
+
+  .agriculture-image-wrap {
+    height: 210px;
+  }
+
+  .agriculture-content h2 {
+    font-size: 20px;
+  }
+
+  .agriculture-description,
+  .agriculture-link {
+    font-size: 14px;
+  }
+}

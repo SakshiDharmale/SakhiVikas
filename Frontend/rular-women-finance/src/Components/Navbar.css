@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================
+   MAIN NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+  min-width: 100%;
+
+  /*background-color: #1f3a3d;*/
+   background: linear-gradient(to right, #bfdbfe, #0284c7);
+
+  color: white;
+
+  padding: 8px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /*border: 4px solid red;*/
+}
+
+
+/* =========================LOGO========================= */
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+
+  text-decoration: none;
+  color: white;
+
+  border: 3px solid blue;
+  padding: 3px;
+}
+
+.logo-circle {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+  background-color: #e1a94c;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid yellow;
+}
+
+.logo-circle span {
+  color: #1f3a3d;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.brand-name {
+  display: flex;
+  padding: 3px;
+  border: 3px solid pink;
+  min-width: 35%;
+  gap: 10px;
+}
+
+.brand-name h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+.en-brand-name{
+  border: 3px solid #7f78ca;
+}
+
+.sakhiVikas{
+  border: 3px solid #7f78ca;
+}
+
+.sakhiVikas p {
+  gap: 8px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.logout-button{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 16px;
+
+  background-color: #e1a94c;
+  color: #1f3a3d;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+/* =========================
+   DESKTOP NAVIGATION
+========================= */
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 5px;
+
+  color: white;
+  text-decoration: none;
+
+  background: none;
+
+  border: 2px solid orange;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  color: #e1a94c;
+}
+
+
+/* =========================
+   THREE LINE BUTTON
+========================= */
+
+/* Hidden on desktop */
+.menu-button {
+  display: none;
+
+  background: none;
+  color: white;
+
+  border: 2px solid orange;
+
+  cursor: pointer;
+
+  padding: 5px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .navbar {
+    position: relative;
+
+    padding: 8px 12px;
+
+    flex-wrap: wrap;
+  }
+
+
+  /* Show three-line button */
+  .menu-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+  }
+
+
+  /* Hide navigation by default */
+  .navigation-section {
+    display: none;
+  }
+
+
+  /* Show navigation when menu is clicked */
+  .navigation-section.mobile-menu-open {
+    display: flex;
+
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 5px;
+
+    margin-top: 8px;
+
+    border: 3px solid lime;
+  }
+
+
+  /* Mobile navigation links */
+  .navigation-section .nav-link {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    padding: 10px;
+
+    border: 2px solid orange;
+  }
+
+}

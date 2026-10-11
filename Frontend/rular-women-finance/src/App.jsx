@@ -1,19 +1,26 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-
 import ChooseLanguage from "./ChooseLanguage";
 import Login from "./Login";
 import Register from "./Register";
-import OTP from "./OTP";
-import Success from "./Success";
-
 import Dashboard from "./Dashboard";
 import ExpenseTracker from "./ExpenseTracker";
 import BusinessRecommendations from "./BusinessRecommendations";
-import BusinessInfoHub from "./BusinessInfoHub";
+import {BusinessInfoHub} from "./BusinessInfoHub";
+import Navbar from "./Components/Navbar";
+import FinancialAdvisor from "./FinancialAdvisor";
+import TailoringBusiness from "./Pages/TailoringBusiness";
+import FoodBusiness from "./Pages/FoodBusiness";
+import HandicraftBusiness from "./Pages/HandicraftBusiness";
+import AgricultureBusiness from "./Pages/AgricultureBusiness";
+import VillageBusiness from "./Pages/VillageBusiness";
 
 function App() {
-  const [language, setLanguage] = useState(null);
+  {/*const [language, setLanguage] = useState(null);*/}
+  
+  const [language, setLanguage] = useState(
+  localStorage.getItem("language")
+);
 
   const [authData, setAuthData] = useState({
     name: "",
@@ -24,17 +31,12 @@ function App() {
 
   return (
     <BrowserRouter>
+     {/*<Navbar/>*/}
       <Routes>
-
         {/* ================= LANGUAGE ================= */}
         <Route
           path="/"
-          element={
-            <ChooseLanguage
-              language={language}
-              setLanguage={setLanguage}
-            />
-          }
+          element={<ChooseLanguage language={language} setLanguage={setLanguage}/>}
         />
 
         {/* ================= LOGIN ================= */}
@@ -60,36 +62,6 @@ function App() {
               <Register
                 language={language}
                 setAuthData={setAuthData}
-              />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
-
-        {/* ================= OTP ================= */}
-        <Route
-          path="/otp"
-          element={
-            language ? (
-              <OTP
-                language={language}
-                authData={authData}
-              />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
-
-        {/* ================= SUCCESS ================= */}
-        <Route
-          path="/success"
-          element={
-            language ? (
-              <Success
-                language={language}
-                mode={authData.mode}
               />
             ) : (
               <Navigate to="/" replace />
@@ -144,6 +116,41 @@ function App() {
             )
           }
         />
+
+        <Route
+       path="/business-info/tailoring"
+       element={<TailoringBusiness language={language} />}
+      />
+      <Route
+      path="/business-info/food"
+      element={<FoodBusiness language={language} />}
+      />
+      <Route
+      path="/business-info/agriculture"
+      element={<AgricultureBusiness language={language} />}
+      />
+      <Route
+      path="/business-info/handicraft"
+      element={<HandicraftBusiness language={language} />}
+      />
+      <Route
+      path="/business-info/village"
+      element={<VillageBusiness language={language} />}
+      />
+
+    {/* ================= FINANCIAL ADVISOR ================= */}
+
+<Route
+  path="/financial-advisor"
+  element={
+    language ? (
+      <FinancialAdvisor language={language} />
+    ) : (
+      <Navigate to="/" replace />
+    )
+  }
+/>
+
 
         {/* ================= UNKNOWN URL ================= */}
         <Route

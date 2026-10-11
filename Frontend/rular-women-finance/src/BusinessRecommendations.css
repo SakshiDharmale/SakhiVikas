@@ -1,116 +1,371 @@
-.recommendation-page {
+/* =====================================================
+   BUSINESS RECOMMENDATION PAGE
+   ===================================================== */
+
+.business-recommendation-page {
+  width: 100%;
   min-height: 100vh;
-  background: #fbf6ec;
-  padding: 40px 24px;
+  padding: 30px 25px 50px;
   box-sizing: border-box;
+  background: #fbf6ec;
 }
 
-.recommendation-container {
-  max-width: 900px;
+
+/* =====================================================
+   MAIN CARD
+   ===================================================== */
+
+.business-recommendation-card {
+  width: 100%;
+  max-width: 950px;
   margin: 0 auto;
-}
-
-.recommendation-heading {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.recommendation-heading h1 {
-  font-family:
-    "Fraunces",
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  color: #1f3a3d;
-  font-size: 30px;
-
-  margin: 0 0 8px;
-}
-
-.recommendation-heading p {
-  color: #5b564c;
-  font-size: 14px;
-}
-
-.recommendation-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 18px;
-}
-
-.recommendation-card {
-  position: relative;
-
+  padding: 32px 38px;
+  box-sizing: border-box;
   background: #ffffff;
-
-  border: 1px solid #e4dac4;
-  border-radius: 16px;
-
-  padding: 24px;
-
-  min-height: 210px;
+  border: 2px solid #f4e49a;
+  border-radius: 30px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
 }
 
-.recommendation-card:hover {
-  box-shadow:
-    0 7px 20px rgba(0, 0, 0, 0.06);
 
-  transform: translateY(-2px);
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
 }
 
 .recommendation-icon {
-  width: 48px;
-  height: 48px;
-
-  border-radius: 50%;
-
-  background: #f3ecdc;
-  color: #c98a2b;
-
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 18px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #fff1dc;
+  color: #e85d04;
 }
 
-.recommendation-card h2 {
-  font-family:
-    "Fraunces",
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  color: #1f3a3d;
-  font-size: 19px;
-
-  margin: 0 0 8px;
+.recommendation-header h1 {
+  margin: 0 0 5px;
+  color: #3e2926;
+  font-size: 30px;
+  font-weight: 700;
 }
 
-.recommendation-card p {
-  color: #5b564c;
-  font-size: 14px;
-  line-height: 1.55;
-
+.recommendation-header p {
   margin: 0;
+  color: #806f69;
+  font-size: 15px;
 }
 
-.recommendation-label {
-  display: inline-block;
 
-  margin-top: 18px;
+/* =====================================================
+   SECTIONS
+   ===================================================== */
 
-  background: #f3ecdc;
-  color: #1f3a3d;
+.recommendation-section {
+  margin-bottom: 28px;
+}
 
-  border-radius: 20px;
+.recommendation-section h2 {
+  margin: 0 0 15px;
+  color: #503a35;
+  font-size: 18px;
+  font-weight: 700;
+}
 
-  padding: 5px 10px;
 
-  font-size: 12px;
-  font-weight: 600;
+/* =====================================================
+   TWO COLUMN GRID
+   ===================================================== */
+
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+
+/* =====================================================
+   FORM FIELD
+   ===================================================== */
+
+.recommendation-field {
+  width: 100%; 
+
+}
+
+.recommendation-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #5a403b;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   INPUT + SELECT
+   ===================================================== */
+
+.recommendation-field input,
+.recommendation-field select {
+  width: 100%;
+  height: 52px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border: 2px solid #eadca8;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #4c3935;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.recommendation-field input::placeholder {
+  color: #a49690;
+}
+
+.recommendation-field input:focus,
+.recommendation-field select:focus {
+  border-color: #d66a08;
+  box-shadow: 0 0 0 2px rgba(214, 106, 8, 0.08);
+}
+
+.recommendation-field select {
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+   ===================================================== */
+
+.recommendation-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.recommendation-submit-button {
+  width: 330px;
+  height: 55px;
+  border: none;
+  border-radius: 30px;
+  background: #ed5b00;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+}
+
+.recommendation-submit-button:hover {
+  background: #d95000;
+  transform: translateY(-1px);
+}
+
+.recommendation-submit-button:active {
+  transform: scale(0.98);
+}
+
+.recommendation-submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =====================================================
+   SUGGESTION BOX
+   ===================================================== */
+
+.business-suggestion-box {
+  width: 100%;
+  max-width: 950px;
+  margin: 25px auto 0;
+  padding: 25px 30px;
+  box-sizing: border-box;
+  background: #fffaf0;
+  border: 2px solid #e1a94c;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =====================================================
+   SUGGESTION HEADER
+   ===================================================== */
+
+.suggestion-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.suggestion-header svg {
+  color: #e1a94c;
+  flex-shrink: 0;
+}
+
+.suggestion-header h2 {
+  margin: 0;
+  color: #3e2926;
+  font-size: 22px;
+}
+
+
+/* =====================================================
+   SUGGESTION CONTENT
+   ===================================================== */
+
+.suggestion-content {
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0dfb2;
+}
+
+.suggestion-content h3 {
+  margin: 0 0 8px;
+  color: #2f8735;
+  font-size: 22px;
+}
+
+.suggestion-content p {
+  margin: 0;
+  color: #5a403b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .business-recommendation-page {
+    padding: 20px 15px 35px;
+  }
+
+  .business-recommendation-card {
+    padding: 27px 25px;
+  }
+
+  .recommendation-header h1 {
+    font-size: 27px;
+  }
+
+  .recommendation-grid {
+    gap: 14px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .business-recommendation-page {
+    padding: 15px 10px 30px;
+  }
+
+  .business-recommendation-card {
+    padding: 22px 18px;
+    border-radius: 25px;
+  }
+
+  .recommendation-header {
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .recommendation-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+  }
+
+  .recommendation-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .recommendation-header h1 {
+    font-size: 23px;
+  }
+
+  .recommendation-header p {
+    font-size: 13px;
+  }
+
+  /*
+     On mobile, fields become one column
+  */
+
+  .recommendation-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .recommendation-section {
+    margin-bottom: 23px;
+  }
+
+  .recommendation-section h2 {
+    font-size: 17px;
+  }
+
+  .recommendation-field label {
+    font-size: 14px;
+  }
+
+  .recommendation-field input,
+  .recommendation-field select {
+    height: 47px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .recommendation-submit-button {
+    width: 100%;
+    height: 51px;
+    font-size: 17px;
+  }
+
+  .business-suggestion-box {
+    padding: 20px 17px;
+    border-radius: 22px;
+  }
+
+  .suggestion-header h2 {
+    font-size: 19px;
+  }
+
+  .suggestion-content {
+    padding: 15px;
+  }
+
+  .suggestion-content h3 {
+    font-size: 19px;
+  }
+
+  .suggestion-content p {
+    font-size: 15px;
+  }
 }

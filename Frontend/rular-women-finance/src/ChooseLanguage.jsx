@@ -1,14 +1,9 @@
-import { useEffect } from "react";
-
+{/*import { useEffect } from "react";*/}
 import { useNavigate } from "react-router-dom";
-
-import {
-  LANGUAGES,
-} from "./data";
-
+import {LANGUAGES} from "./data";
 import SakhiMark from "./components/SakhiMark";
-
 import "./ChooseLanguage.css";
+import HomeImage from "./assets/home.jpg.png";
 
 export default function ChooseLanguage({
   language,
@@ -16,7 +11,7 @@ export default function ChooseLanguage({
 }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
+  {/*useEffect(() => {
 
     if (language) {
       navigate("/login", {
@@ -27,40 +22,32 @@ export default function ChooseLanguage({
   }, [language, navigate]);
 
   const chooseLanguage = (code) => {
-
     setLanguage(code);
-
     navigate("/login");
-  };
+  };*/}
+
+  const chooseLanguage = (code) => {
+  localStorage.setItem("language", code);
+  setLanguage(code);
+  navigate("/login");
+};
 
   return (
 
-    <div className="language-page">
-
+    <div className="language-page" style={{ backgroundImage: `url(${HomeImage})` }}>
       <div className="language-container">
-
         {/* LOGO */}
-
         <div className="language-logo">
-
           <SakhiMark size={140} />
-
         </div>
 
         {/* APP NAME */}
-
-        <h1>
-          SakhiVikas
-        </h1>
-
-        <p className="language-script">
-          सखी विकास
-        </p>
+        <h1>SakhiVikas</h1>
+        <p className="language-script">सखी विकास</p>
 
         {/* LANGUAGE BOX */}
 
         <div className="language-card">
-
           <h2>
             Choose your language
             {" · "}
@@ -75,9 +62,7 @@ export default function ChooseLanguage({
           </p>
 
           <div className="language-list">
-
             {LANGUAGES.map((item) => (
-
               <button
                 key={item.code}
                 className="language-button"

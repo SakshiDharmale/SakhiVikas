@@ -1,4 +1,4 @@
-:root {
+/*:root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -52,6 +52,7 @@
 
 body {
   margin: 0;
+  background: #fff5f8;
 }
 
 #root {
@@ -109,3 +110,25 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* FIX: Keep the background color consistent while scrolling */
+
+/*:root {
+  --bg: #fff5f8;
+  background: #fff5f8;
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: #fff5f8;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}*/

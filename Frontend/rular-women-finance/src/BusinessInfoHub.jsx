@@ -1,115 +1,54 @@
-import {
-  ArrowLeft,
-  Scissors,
-  Milk,
-  Utensils,
-} from "lucide-react";
-
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import { T } from "./data";
-
 import "./BusinessInfoHub.css";
 
-export default function BusinessInfoHub({
-  language,
-}) {
+const businesses = [
+  { id: "food", title: "businessFoodTitle" },
+  { id: "tailoring", title: "businessTailoringTitle" },
+  { id: "agriculture", title: "businessAgricultureTitle" },
+  { id: "handicraft", title: "businessHandicraftTitle" },
+  { id: "village", title: "businessVillageTitle" },
+  { id: "other", title: "businessOtherTitle" },
+];
 
-  const t = T[language];
-
+export function BusinessInfoHub({ language }) {
   const navigate = useNavigate();
+  const t = T[language] || T.en;
 
-  const information = [
-    {
-      title: t.tailoring,
-      text: t.tailoringInfo,
-      icon: Scissors,
-    },
-
-    {
-      title: t.dairy,
-      text: t.dairyInfo,
-      icon: Milk,
-    },
-
-    {
-      title: t.foodBusiness,
-      text: t.foodInfo,
-      icon: Utensils,
-    },
-  ];
+  const handleBusinessClick = (businessId) => {
+    navigate(`/business-info/${businessId}`);
+  };
 
   return (
-    <div className="business-info-page">
+    <main className="business-page">
+      <div className="business-container">
+        <h1>{t.businessInfoHeading}</h1>
 
-      <div className="business-info-container">
+        <p className="business-subtitle">
+          {t.businessInfoSubtitle}
+        </p>
 
-        <button
-          className="page-back-button"
-          onClick={() =>
-            navigate("/dashboard")
-          }
-        >
-          <ArrowLeft size={17} />
+        <div className="business-grid">
+          {businesses.map((business, index) => (
+            <button
+              key={business.id}
+              type="button"
+              className="business-option"
+              onClick={() => handleBusinessClick(business.id)}
+            >
+              <span className="business-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
 
-          {t.backToDashboard}
-        </button>
+              <span className="business-option-title">
+                {t[business.title]}
+              </span>
 
-
-        <div className="business-info-heading">
-
-          <h1>
-            {t.businessInfoTitle}
-          </h1>
-
-          <p>
-            {t.businessInfoDesc}
-          </p>
-
+            </button>
+          ))}
         </div>
-
-
-        <div className="business-info-list">
-
-          {information.map((item) => {
-
-            const Icon = item.icon;
-
-            return (
-
-              <div
-                className="business-info-card"
-                key={item.title}
-              >
-
-                <div className="business-info-icon">
-
-                  <Icon size={24} />
-
-                </div>
-
-                <div>
-
-                  <h2>
-                    {item.title}
-                  </h2>
-
-                  <p>
-                    {item.text}
-                  </p>
-
-                </div>
-
-              </div>
-
-            );
-
-          })}
-
-        </div>
-
       </div>
-
-    </div>
+    </main>
   );
 }
