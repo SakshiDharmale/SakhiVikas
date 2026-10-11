@@ -84,7 +84,7 @@ router.get('/getFinancialAnalytics',verifytoken,async (req, res) => {
 
 router.get('/getAlAnalytics', verifytoken, async (req, res) => {
     try {
-        const range = String(req.query.range ?? "monthly").trim().toLowerCase();
+        const range = String(req.body.range ?? "monthly").trim().toLowerCase();
         const allowedRanges = ["daily", "weekly", "monthly", "yearly"];
         if (!allowedRanges.includes(range)) {
             return res.status(400).json({
@@ -93,7 +93,7 @@ router.get('/getAlAnalytics', verifytoken, async (req, res) => {
             });
         }
 
-        const requestedLanguage = String(req.query.language ?? "English").trim();
+        const requestedLanguage = String(req.body.language ?? "English").trim();
         const language = ["English", "Hindi", "Marathi"].find(
             (supported) => supported.toLowerCase() === requestedLanguage.toLowerCase()
         ) ?? "English";
