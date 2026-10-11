@@ -7,12 +7,12 @@ dotenv.config();
 
 
 export async function login(req,res){
-const { name, password } = req.body;
-if (!name|| !password) {
+const { mobile_Number, password } = req.body;
+if (!mobile_Number|| !password) {
     return res.status(400).json({ error: 'name and password required' });
 }
-const query = 'select * from users where name=?;';
-db.query(query, [name], async (err, results) => {
+const query = 'select * from users where mobile_Number=?;';
+db.query(query, [mobile_Number], async (err, results) => {
     if (err) {
         console.log(err);
         return res.status(500).json({ error: 'server error' });
@@ -31,20 +31,20 @@ db.query(query, [name], async (err, results) => {
         process.env.secret,
         { expiresIn: '1d' }
     );
-    res.json({ token: token, id: user.user_id });
+    return res.json({ token: token, id: user.user_id });
     });
 };
 
 export async function register(req,res){
     let name;
-    let mobile_number;
+    let mobile_Number;
     let password;
     const b = req.body;
     if (Array.isArray(b)) {
-        [name, mobile_number, password] = b;
+        [name, mobile_Number, password] = b;
     } else {
         name = b.name || b.Name;
-        mobile_number = b.mobile_number;
+        mobile_Number = b.mobile_Number;
         
         password = b.password;
     }
@@ -54,7 +54,7 @@ export async function register(req,res){
         const hash_password = await bcrypt.hash(password, 10);
         const query =
             'insert into users(name,mobile_Number,password) values(?,?,?);';
-        db.query(query, [name, mobile_number, hash_password], (err) => {
+        db.query(query, [name, mobile_Number, hash_password], (err) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({ error: 'could not register' });

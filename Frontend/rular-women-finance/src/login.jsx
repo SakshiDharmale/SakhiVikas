@@ -1,54 +1,36 @@
 import { useState } from "react";
-
-import {
-  Eye,
-  EyeOff,
-  ArrowRight,
-} from "lucide-react";
-
+import {Eye, EyeOff, ArrowRight} from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 import { T } from "./data";
-
 import AuthShell from "./components/AuthShell";
-
-import {
-  TextField,
-  FieldLabel,
-  PrimaryButton,
-} from "./components/Field";
-
+import {TextField,FieldLabel, PrimaryButton,} from "./components/Field";
 import "./components/AuthShell.css";
 import "./components/Field.css";
-
 import "./Login.css";
+
+const API_BASE_URL =
+import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 export default function Login({
   language,
   setAuthData,
 }) {
-
   const t = T[language];
 
   const navigate = useNavigate();
 
-  const [mobile, setMobile] =
-    useState("");
-
-  const [password, setPassword] =
-    useState("");
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] =
     useState(false);
 
-  const [errors, setErrors] =
-    useState({});
+  const [errors, setErrors] = useState({});
 
   const [submitting, setSubmitting] =
     useState(false);
 
-  const submit = (e) => {
-
+  const submit = async (e) => {
     e.preventDefault();
 
     const next = {};
@@ -57,8 +39,12 @@ export default function Login({
       next.mobile = t.errMobile;
     }
 
-    if (password.length < 6) {
-      next.password = t.errPassword;
+    if (
+      password.length < 6 ||
+      password.length > 16
+    ) {
+      next.password =
+        "Password must be between 6 and 16 characters.";
     }
 
     setErrors(next);
@@ -67,32 +53,69 @@ export default function Login({
       return;
     }
 
-    setAuthData({
-      name: "",
-      mobile,
-      password,
-      mode: "login",
-    });
+    try {
+      setSubmitting(true);
 
-    setSubmitting(true);
+      const response = await fetch(
+        `${API_BASE_URL}/login`,
+        {
+          method: "POST",
 
-    setTimeout(() => {
+          headers: {
+            "Content-Type": "application/json",
+            
+          },
 
+          body: JSON.stringify({
+            mobile_Number: mobile,
+            password: password,
+          }),
+
+        }
+      );
+      
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.error || "Invalid mobile number or password."
+        );
+      }
+
+      // Save JWT token
+      localStorage.setItem(
+        "token",
+        result.token
+      );
+
+      // Save user id if backend sends it
+      
+      setAuthData({
+        name: "",
+        mobile,
+        password,
+        mode: "login",
+      });
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login error:", error);
+
+      setErrors({
+        api:
+          error.message ||
+          "Unable to login. Please try again.",
+      });
+    } finally {
       setSubmitting(false);
-
-      navigate("/otp");
-
-    }, 500);
+    }
   };
 
   return (
-
     <AuthShell language={language}>
-
       <div className="form-container">
 
         {/* TABS */}
-
         <div className="auth-tabs">
 
           <button className="active-tab">
@@ -110,7 +133,6 @@ export default function Login({
         </div>
 
         {/* TITLE */}
-
         <h2 className="auth-title">
           {t.loginTitle}
         </h2>
@@ -119,10 +141,17 @@ export default function Login({
           {t.loginSubtitle}
         </p>
 
-        {/* FORM */}
+        {/* API ERROR */}
+        {errors.api && (
+          <p className="error-text">
+            {errors.api}
+          </p>
+        )}
 
+        {/* FORM */}
         <form onSubmit={submit}>
 
+          {/* MOBILE */}
           <TextField
             label={t.mobileLabel}
             placeholder={t.mobilePlaceholder}
@@ -139,7 +168,6 @@ export default function Login({
           />
 
           {/* PASSWORD */}
-
           <div className="password-field">
 
             <FieldLabel>
@@ -152,19 +180,13 @@ export default function Login({
                   ? "text"
                   : "password"
               }
-
               placeholder={
                 t.passwordPlaceholder
               }
-
               value={password}
-
               onChange={(e) =>
-                setPassword(
-                  e.target.value
-                )
+                setPassword(e.target.value)
               }
-
               className={`text-input ${
                 errors.password
                   ? "input-error"
@@ -181,7 +203,6 @@ export default function Login({
                 )
               }
             >
-
               {showPassword ? (
                 <EyeOff size={17} />
               ) : (
@@ -191,28 +212,23 @@ export default function Login({
               {showPassword
                 ? t.hide
                 : t.show}
-
             </button>
 
             {errors.password && (
-
               <p className="error-text">
                 {errors.password}
               </p>
-
             )}
 
           </div>
 
           {/* BUTTON */}
-
           <div className="submit-space">
 
             <PrimaryButton
               type="submit"
               disabled={submitting}
             >
-
               {submitting
                 ? "…"
                 : t.loginBtn}
@@ -220,7 +236,6 @@ export default function Login({
               {!submitting && (
                 <ArrowRight size={18} />
               )}
-
             </PrimaryButton>
 
           </div>
@@ -228,7 +243,6 @@ export default function Login({
         </form>
 
         {/* REGISTER LINK */}
-
         <p className="switch-text">
 
           {t.noAccount}{" "}
@@ -244,7 +258,6 @@ export default function Login({
         </p>
 
       </div>
-
     </AuthShell>
   );
 }

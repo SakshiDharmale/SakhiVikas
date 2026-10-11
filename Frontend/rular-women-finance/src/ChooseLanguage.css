@@ -1,115 +1,110 @@
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
 .language-page {
   min-height: 100vh;
-
-  background: #fbf6ec;
-
+  /*overflow: hidden;
+  background: #fbf6ec;*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
-  padding: 24px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .language-container {
   width: 100%;
-
-  max-width: 480px;
-
+  max-width: 620px;
   text-align: center;
 }
 
 .language-logo {
-  width: 160px;
-
-  height: 160px;
-
-  margin: 0 auto 10px;
-
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 16px;
   border-radius: 50%;
-
   background: #1f3a3d;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
 }
 
 .language-container h1 {
-  color: #1f3a3d;
-
-  font-family:
-    "Fraunces",
-    serif;
-
-  font-size: 34px;
-
+  color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /*font-family:  "Fraunces",
+    serif;*/
+  text-shadow:#f00c4c;
+  
+  font-size: 38px;
   margin: 12px 0 0;
 }
 
 .language-script {
-  color: #5b564c;
-
+  color: white;
   margin: 4px 0;
-
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .language-card {
   border: 1px solid #e4dac4;
-
   border-radius: 16px;
-
-  padding: 24px;
-
-  margin-top: 32px;
+  padding: 26px;
+  margin-top: 24px;
 }
 
 .language-card h2 {
-  color: #22201b;
-
-  font-size: 18px;
-
+  color: ghostwhite;
+  /*color: #22201b;*/
+  font-size: 22px;
   margin: 0;
 }
 
 .language-card p {
-  color: #5b564c;
-
-  font-size: 14px;
-
-  margin: 6px 0 20px;
+  color: #00020b;
+  font-size: 16px;
+  margin: 10px 0 24px;
 }
 
 .language-list {
   display: flex;
-
   flex-direction: column;
-
-  gap: 12px;
+  gap: 14px;
 }
+
+/*.language-button {
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid #e4dac4;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #22201b;
+}*/
 
 .language-button {
   width: 100%;
-
-  padding: 14px 20px;
-
+  box-sizing: border-box;
+  padding: 18px 24px;
   border: 1px solid #e4dac4;
-
   border-radius: 12px;
-
-  background: #ffffff;
-
+  background: #fff;
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   color: #22201b;
+  cursor: pointer;
 }
 
 .language-button:hover {
@@ -119,8 +114,7 @@
 }
 
 .language-button span {
-  font-size: 16px;
-
+  font-size: 18px;
   font-weight: 600;
 }
 
