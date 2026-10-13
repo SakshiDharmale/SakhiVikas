@@ -20,13 +20,13 @@ router.post('/register', register);
 //Income 
 router.post('/AddIncome', verifytoken, insertincome);
 router.get('/GetAllIncome', verifytoken, getallincome);
-router.put('/UpdateIncome', verifytoken, updateincome);
-router.delete('/DeleteIncome', verifytoken, deleteincome);
+router.put('/UpdateIncome/:id', verifytoken, updateincome);
+router.delete('/DeleteIncome/:id', verifytoken, deleteincome);
 //expense
 router.post('/AddExpense', verifytoken,insertExpense);
 router.get('/GetAllExpense',verifytoken, getallexpense);
-router.put('/UpdateExpense',verifytoken, updateExpense);
-router.delete('/DeleteExpense',verifytoken, deleteExpense);
+router.put('/UpdateExpense/:id',verifytoken, updateExpense);
+router.delete('/DeleteExpense/:id',verifytoken, deleteExpense);
 //analytics
 
 router.get('/CategoryWiseAnalysis',verifytoken,async (req, res) => {
@@ -84,7 +84,7 @@ router.get('/getFinancialAnalytics',verifytoken,async (req, res) => {
 
 router.get('/getAlAnalytics', verifytoken, async (req, res) => {
     try {
-        const range = String(req.body.range ?? "monthly").trim().toLowerCase();
+        const range = String(req.query.range ?? "monthly").trim().toLowerCase();
         const allowedRanges = ["daily", "weekly", "monthly", "yearly"];
         if (!allowedRanges.includes(range)) {
             return res.status(400).json({
@@ -93,7 +93,7 @@ router.get('/getAlAnalytics', verifytoken, async (req, res) => {
             });
         }
 
-        const requestedLanguage = String(req.body.language ?? "English").trim();
+        const requestedLanguage = String(req.query.language ?? "English").trim();
         const language = ["English", "Hindi", "Marathi"].find(
             (supported) => supported.toLowerCase() === requestedLanguage.toLowerCase()
         ) ?? "English";

@@ -121,6 +121,9 @@ export async function generateFinancialadvice(Analytics, language ) {
     - Clear explanations
     - Practical suggestions
     - Encouraging tone
+    - Format the response in three short sections with bold Markdown headings, translated into the requested language: Summary, What the numbers mean, and What you can do next.
+    - Put practical actions under the final section as short bullet points.
+    - Keep key labels or important values bold when useful.
     Avoid:
     - Complicated financial terminology
     - Unnecessary technical explanations

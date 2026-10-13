@@ -43,7 +43,7 @@
 
 .business-grid {
   display: grid;
-  display: ;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 28px;
 }
@@ -59,7 +59,7 @@
   box-sizing: border-box;
 
   background: #FFFFFF;
-  border:  gray;
+  border: 1px solid #e4e9e5;
   border-radius: 16px;
 
   color: #1F3A3D;
@@ -105,6 +105,13 @@
   font-size: 15px;
   font-weight: 700;
 }
+
+.business-option:nth-child(6n + 1) .business-number { background: #dff3e8; color: #17623a; }
+.business-option:nth-child(6n + 2) .business-number { background: #e3edff; color: #2855a1; }
+.business-option:nth-child(6n + 3) .business-number { background: #ffeadb; color: #a94a16; }
+.business-option:nth-child(6n + 4) .business-number { background: #f1e5ff; color: #7139a5; }
+.business-option:nth-child(6n + 5) .business-number { background: #fff2c9; color: #815a0d; }
+.business-option:nth-child(6n + 6) .business-number { background: #ffe3e7; color: #a4314a; }
 
 /* Business title */
 
@@ -165,6 +172,10 @@
 .business-back:focus-visible {
   outline: 3px solid #C98A2B;
   outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .business-grid { grid-template-columns: 1fr; }
 }
 
 

@@ -436,7 +436,60 @@ button.recommendation-item:hover { background: color-mix(in srgb, var(--orchid) 
 .fa-goal-fill { background: linear-gradient(90deg, #67e8f9, var(--save)); }
 .fa-goal-track { background: color-mix(in srgb, var(--earn) 8%, #fff); }
 
+.recommendations-panel {
+  width: 100%;
+  padding: 20px;
+  border-radius: 16px;
+}
 
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0;
+  text-align: left;
+  cursor: pointer;
+  color: #374151;
+}
+
+.recommendation-item:last-child {
+  border-bottom: none;
+}
+
+.recommendation-item span {
+  flex: 1;
+  line-height: 1.5;
+}
+
+.fa-advice-card { align-items: flex-start; cursor: default; }
+.fa-advice-card:hover { background: color-mix(in srgb, var(--orchid) 18%, #fff); }
+.fa-advice-content { display: grid; gap: 8px; min-width: 0; line-height: 1.6; }
+.fa-advice-content h3 { margin: 4px 0 0; color: var(--brand-dark); font-size: 16px; font-weight: 700; }
+.fa-advice-content p { margin: 0; line-height: 1.6; }
+.fa-advice-content strong { color: var(--ink); font-weight: 700; }
+.fa-advice-content .fa-advice-bullet { position: relative; padding-left: 18px; }
+.fa-advice-content .fa-advice-bullet::before { position: absolute; left: 3px; content: "•"; color: var(--brand); font-weight: 700; }
+
+.recommendation-item.completed {
+  background: #f0fdf4;
+  color: #166534;
+}
 /* ============================================================
    FINANCIAL ADVISOR – light pastel "glass" theme
    Works with your existing class names + a few optional ones

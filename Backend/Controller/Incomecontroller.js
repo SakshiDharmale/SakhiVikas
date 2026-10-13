@@ -81,7 +81,9 @@ export async function getallincome(req,res) {
 
     try {
         const rows = await runQuery(
-            "SELECT * FROM income WHERE user_id = ? ORDER BY date DESC",
+            `SELECT i.id, i.amount, i.date, i.description, c.name AS category
+             FROM income i LEFT JOIN categories c ON c.id = i.category_id
+             WHERE i.user_id = ? ORDER BY i.date DESC, i.id DESC`,
             [user_id]
         );
 
@@ -101,6 +103,7 @@ export async function getallincome(req,res) {
 
 export async function updateincome(req,res) {
     const user_id = req.user_id;
+    const id = Number(req.params.id);
     const amount = Number(req.body?.amount);
 
     if (!Number.isInteger(Number(user_id)) || Number(user_id) <= 0) {
@@ -110,7 +113,7 @@ export async function updateincome(req,res) {
         });
     }
 
-    if (req.body?.amount === undefined || !Number.isFinite(amount) || amount <= 0) {
+    if (!Number.isInteger(id) || id <= 0 || req.body?.amount === undefined || !Number.isFinite(amount) || amount <= 0) {
         return res.status(400).json({
             success: false,
             message: "A positive amount is required"
@@ -119,8 +122,8 @@ export async function updateincome(req,res) {
 
     try {
         const result = await runQuery(
-            "UPDATE income SET amount = ? WHERE user_id = ?",
-            [amount, user_id]
+            "UPDATE income SET amount = ? WHERE id = ? AND user_id = ?",
+            [amount, id, user_id]
         );
 
         if (result.affectedRows === 0) {
@@ -147,14 +150,14 @@ export async function updateincome(req,res) {
 
 export async function deleteincome(req,res) {
     const user_id=req.user_id;
+    const id = Number(req.params.id);
     try{
-        
-        await runQuery(
-        "delete from income where user_id=?",
-        [user_id]
-        );
+        if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ success: false, message: "A valid income id is required" });
+        const result = await runQuery("DELETE FROM income WHERE id = ? AND user_id = ?", [id, user_id]);
+        if (result.affectedRows === 0) return res.status(404).json({ success: false, message: "Income entry not found" });
                 
-        res.status(201).json({
+        res.status(200).json({
+        success: true,
         message: "Income deleted successfully",
                             
                             

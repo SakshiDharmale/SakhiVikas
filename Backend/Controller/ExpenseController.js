@@ -88,8 +88,10 @@
          }
      
          try {
-             const rows = await runQuery(
-                "SELECT * FROM expenses WHERE user_id = ? ORDER BY expense_date DESC",
+            const rows = await runQuery(
+               `SELECT e.id, e.amount, e.expense_date AS date, c.name AS category
+                FROM expenses e LEFT JOIN categories c ON c.id = e.category_id
+                WHERE e.user_id = ? ORDER BY e.expense_date DESC, e.id DESC`,
                  [user_id]
              );
      
@@ -109,6 +111,7 @@
      
      export async function updateExpense(req,res) {
          const user_id = req.user_id;
+         const id = Number(req.params.id);
          const amount = Number(req.body?.amount);
      
          if (!Number.isInteger(Number(user_id)) || Number(user_id) <= 0) {
@@ -118,7 +121,7 @@
              });
          }
      
-         if (req.body?.amount === undefined || !Number.isFinite(amount) || amount <= 0) {
+         if (!Number.isInteger(id) || id <= 0 || req.body?.amount === undefined || !Number.isFinite(amount) || amount <= 0) {
              return res.status(400).json({
                  success: false,
                  message: "A positive amount is required"
@@ -127,8 +130,8 @@
      
          try {
              const result = await runQuery(
-                 "UPDATE expenses SET amount = ? WHERE user_id = ?",
-                 [amount, user_id]
+                 "UPDATE expenses SET amount = ? WHERE id = ? AND user_id = ?",
+                 [amount, id, user_id]
              );
      
              if (result.affectedRows === 0) {
@@ -155,14 +158,14 @@
      
      export async function deleteExpense(req,res) {
          const user_id=req.user_id;
+         const id = Number(req.params.id);
          try{
-             
-             await runQuery(
-             "delete from expenses where user_id=?",
-             [user_id]
-             );
+             if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ success: false, message: "A valid expense id is required" });
+             const result = await runQuery("DELETE FROM expenses WHERE id = ? AND user_id = ?", [id, user_id]);
+             if (result.affectedRows === 0) return res.status(404).json({ success: false, message: "Expense entry not found" });
                      
-             res.status(201).json({
+             res.status(200).json({
+             success: true,
              message: "Expenses deleted successfully",
                                  
                                  
