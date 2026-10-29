@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import ChooseLanguage from "./ChooseLanguage";
-import Login from "./Login";
+import Login from "./login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import ExpenseTracker from "./ExpenseTracker";

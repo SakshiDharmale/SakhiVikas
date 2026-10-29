@@ -21,6 +21,7 @@ const BusinessRecommendations = ({ language = "en" }) => {
 
   const [suggestion, setSuggestion] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -34,42 +35,29 @@ const BusinessRecommendations = ({ language = "en" }) => {
     setLoading(true);
     setSuggestion(null);
 
+    setError("");
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/business-recommendation",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to get recommendation");
-      }
-      const data = await response.json();
-
-      /*
-        Expected backend response:
-
-        {
-          recommendation: "Dairy Farming",
-          reason: "This business matches your profile..."
-        }
-      */
-
-      setSuggestion(data);
-    } catch (error) {
-      console.error("Recommendation error:", error);
-
-      // Temporary response for frontend testing
-      setSuggestion({
-        recommendation: "Backend Recommendation",
-        reason:
-          "Your business recommendation will appear here after the backend API is connected.",
+      const apiUrl = (import.meta.env.VITE_RECOMMENDATION_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+      const response = await fetch(`${apiUrl}/recommend`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          investment: Number(formData.investment),
+          available_time: Number(formData.availableTime),
+          skill: formData.skills,
+          land: formData.landAvailability === "yes" ? 1 : 0,
+          experience: { beginner: 0, "1-2_years": 2, "3+_years": 3 }[formData.experience],
+        }),
+        signal: AbortSignal.timeout(30000),
       });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(typeof data.detail === "string" ? data.detail : "Please check your profile and try again.");
+      }
+      if (!Array.isArray(data.recommendations)) throw new Error("Invalid recommendation response.");
+      setSuggestion(data.recommendations);
+    } catch (error) {
+      setError(error.message || "Unable to reach the recommendation service. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -125,7 +113,7 @@ const BusinessRecommendations = ({ language = "en" }) => {
                   value={formData.investment}
                   onChange={handleChange}
                   placeholder={t.enterInvestment}
-                  min="0"
+                  min="1"
                   required
                 />
 
@@ -313,14 +301,10 @@ const BusinessRecommendations = ({ language = "en" }) => {
                   {t.skills}
                 </label>
 
-                <input
-                  type="text"
-                  name="skills"
-                  value={formData.skills}
-                  onChange={handleChange}
-                  placeholder={t.enterSkills}
-                  required
-                />
+                <select name="skills" value={formData.skills} onChange={handleChange} required>
+                  <option value="">{t.enterSkills}</option>
+                  {Object.entries({ cooking: "Cooking", tailoring: "Tailoring", farming: "Farming", animal_husbandry: "Animal husbandry", craft: "Crafts", technical: "Technical work", retail: "Retail", beauty: "Beauty services", machinery: "Machinery" }).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                </select>
 
               </div>
 
@@ -366,29 +350,9 @@ const BusinessRecommendations = ({ language = "en" }) => {
                   {t.availableTime}
                 </label>
 
-                <select
-                  name="availableTime"
-                  value={formData.availableTime}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">
-                    {t.selectTime}
-                  </option>
-
-                  <option value="full_time">
-                    {t.fullTime}
-                  </option>
-
-                  <option value="part_time">
-                    {t.partTime}
-                  </option>
-
-                  <option value="flexible">
-                    {t.flexible}
-                  </option>
-
-                </select>
+                <input type="number" name="availableTime" value={formData.availableTime}
+                  onChange={handleChange} min="1" max="24" step="0.5"
+                  placeholder="Hours per day (1–24)" aria-label="Available hours per day" required />
 
               </div>
 
@@ -470,6 +434,7 @@ const BusinessRecommendations = ({ language = "en" }) => {
           APPEARS ONLY AFTER SUBMIT
           ===================================================== */}
 
+      {error && <p role="alert" className="business-suggestion-box">{error}</p>}
       {suggestion && (
         <div className="business-suggestion-box">
           <div className="suggestion-header">
@@ -483,15 +448,13 @@ const BusinessRecommendations = ({ language = "en" }) => {
 
           <div className="suggestion-content">
 
-            <h3>
-              {suggestion.recommendation}
-            </h3>
-
-            {suggestion.reason && (
-              <p>
-                {suggestion.reason}
-              </p>
-            )}
+            {suggestion.length === 0 && <p>No recommendations found. Try adjusting your profile.</p>}
+            {suggestion.map((item) => (
+              <section key={item.business}>
+                <h3>{item.business}</h3>
+                <ul>{item.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul>
+              </section>
+            ))}
 
           </div>
 
