@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation,} from "react-router-dom";
 import { useState } from "react";
 import ChooseLanguage from "./ChooseLanguage";
 import Login from "./Login";
@@ -14,6 +14,16 @@ import FoodBusiness from "./Pages/FoodBusiness";
 import HandicraftBusiness from "./Pages/HandicraftBusiness";
 import AgricultureBusiness from "./Pages/AgricultureBusiness";
 import VillageBusiness from "./Pages/VillageBusiness";
+
+function AppNavbar() {
+  const location = useLocation();
+
+  const hideNavbar = ["/", "/login", "/register"].includes(
+    location.pathname
+  );
+
+  return hideNavbar ? null : <Navbar />;
+}
 
 function App() {
   {/*const [language, setLanguage] = useState(null);*/}
@@ -31,7 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
-     {/*<Navbar/>*/}
+     <AppNavbar/>
       <Routes>
         {/* ================= LANGUAGE ================= */}
         <Route

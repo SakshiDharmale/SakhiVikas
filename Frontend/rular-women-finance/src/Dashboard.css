@@ -1,12 +1,12 @@
 :root {
-  --dashboard-primary: #da1f63;
-  --dashboard-hover: #c2185b;
+  --dashboard-primary: #a3306f;
+  --dashboard-hover: #701c4d;
   --dashboard-background: #fff5f8;
   --dashboard-card: #ffffff;
-  --dashboard-text: #1f2937;
-  --dashboard-muted: #6b7280;
-  --dashboard-border: #fbcfe8;
-  --dashboard-shadow: rgba(218, 31, 99, 0.13);
+  --dashboard-text: #351b2d;
+  --dashboard-muted: #826579;
+  --dashboard-border: #f2e0e9;
+  --dashboard-shadow: rgba(112, 28, 77, 0.13);
 }
 
 /* MAIN PAGE */
@@ -20,22 +20,16 @@ body,
   background: #fff5f8;
 }
 
-.dashboard-page {
  .dashboard-page {
   width: 100%;
   min-height: 100vh;
   background: #fff5f8;
   color: var(--dashboard-text);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: playfair;
   padding-bottom: 24px;
   box-sizing: border-box;
 }
-}
+
 
 /* HEADER */
 
@@ -109,12 +103,18 @@ body,
 .dashboard-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
+ /* background: linear-gradient(
     135deg,
     #c2185b 0%,
     #da1f63 50%,
     #e91e63 100%
-  );
+  );*/
+  background: linear-gradient(
+  110deg,
+  #701c4d 0%,
+  #a3306f 55%,
+  #b84483 100%
+);
   color: #ffffff;
   padding: 42px 36px;
   border-radius: 24px;
@@ -231,7 +231,8 @@ body,
 .dashboard-card:hover {
   transform: translateY(-4px);
   border-color: var(--dashboard-primary);
-  box-shadow: 0 12px 24px var(--dashboard-shadow);
+  box-shadow: 0 12px 28px rgba(112, 28, 77, 0.16);
+  background: #fffafd;
 }
 
 .dashboard-card:focus-visible,
@@ -256,7 +257,7 @@ body,
   height: 47px;
   flex-shrink: 0;
   border-radius: 14px;
-  background: #fce7f3;
+  background: #f9e5ee;
   color: var(--dashboard-primary);
   display: flex;
   align-items: center;
@@ -268,11 +269,12 @@ body,
   height: 34px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #fdf2f8;
+   background: #fff5f8;
   color: var(--dashboard-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(3px);
   transition:
     background 0.2s ease,
     transform 0.2s ease;
@@ -293,7 +295,7 @@ body,
   margin: 0 0 9px;
   font-size: 19px;
   line-height: 1.4;
-  color: #4a041d;
+  color: #351b2d;
   font-weight: 750;
 }
 
@@ -312,7 +314,7 @@ body,
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px 12px;
-  border-top: 1px solid #fce7f3;
+  border-top: 1px solid var(--dashboard-border);
   padding-top: 13px;
   margin-top: auto;
   font-size: 11px;
@@ -400,6 +402,7 @@ body,
 
   .dashboard-brand-subtitle {
     font-size: 10px;
+    color: var(--dashboard-primary);
   }
 
   .dashboard-container {

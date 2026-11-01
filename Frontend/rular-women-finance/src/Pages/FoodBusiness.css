@@ -4,8 +4,8 @@
   min-height: 100vh;
   padding: 28px 24px 48px;
   box-sizing: border-box;
-  background: #ffffff;
-  color: #1F3A3D;
+  background:  #fff5f8;
+  color:  #351b2d;
   font-family: Arial, sans-serif;
 }
 
@@ -27,13 +27,13 @@
   font-family: Georgia, serif;
   font-size: 30px;
   font-weight: 500;
-  color: #1F3A3D;
+  color: #351b2d;
   text-align: left;
 }
 
 .food-header p {
   margin: 0;
-  color: #6b7472;
+  color: #826579;
   font-size: 15px;
   line-height: 1.7;
   text-align: left;
@@ -65,7 +65,7 @@
   height: 165px;
   overflow: hidden;
   border-radius: 8px;
-  background: #f3efe7;
+  background: #f9e5ee;
 }
 
 .food-image {
@@ -87,7 +87,7 @@
 
 .food-content h2 {
   margin: 0 0 9px;
-  color: #1F3A3D;
+  color: #351b2d;
   font-family: Georgia, serif;
   font-size: 21px;
   font-weight: 500;
@@ -97,7 +97,7 @@
 
 .food-description {
   margin: 0 0 13px;
-  color: #626d69;
+  color:  #826579;
   font-size: 14px;
   line-height: 1.7;
   text-align: left;
@@ -115,7 +115,7 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 8px;
-  color: blue;
+  color: #a3306f;
   font-size: 14px;
   line-height: 1.6;
   text-decoration: none;
@@ -131,7 +131,7 @@
 }
 
 .food-link:hover {
-  color: #174d40;
+  color: #701c4d;
   text-decoration: underline;
 }
 
@@ -139,10 +139,11 @@
 .food-goal {
   margin: 14px 0 0;
   padding: 10px 12px;
-  border-left: 3px solid rgb(193, 190, 190);
+  /*border-left: 3px solid rgb(193, 190, 190);*/
+  border-left: 3px solid #a3306f;
   border-radius: 0 5px 5px 0;
-  background: rgb(242, 241, 241);
-  color: #455852;
+  background: #f9e5ee;
+  color: #351b2d;
   font-size: 13px;
   line-height: 1.7;
   text-align: left;

@@ -1,12 +1,5 @@
 
-import {
-  ArrowRight,
-  Wallet,
-  Lightbulb,
-  Store,
-  CircleDollarSign,
-} from "lucide-react";
-
+import {ArrowRight, Wallet, Lightbulb, Store, CircleDollarSign,} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { T } from "./data";
 import "./Dashboard.css";
@@ -57,7 +50,7 @@ export default function Dashboard({ language }) {
   return (
     <div className="dashboard-page">
       {/* HEADER */}
-      <header className="dashboard-header">
+     {/* <header className="dashboard-header">
         <div className="dashboard-header-container">
           <div className="dashboard-brand">
             <div className="dashboard-logo">स</div>
@@ -74,7 +67,7 @@ export default function Dashboard({ language }) {
             </div>
           </div>
         </div>
-      </header>
+      </header>*/}
 
       {/* MAIN CONTENT */}
       <main className="dashboard-container">
