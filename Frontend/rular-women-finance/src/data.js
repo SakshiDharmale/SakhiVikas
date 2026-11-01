@@ -291,6 +291,19 @@ expenseTypeRequired:
 detailsSaved:
   "Your entry has been saved successfully.",
 
+dateLabel: "Date",
+amountLabel: "Amount",
+actionsLabel: "Actions",
+save: "Save",
+deleteLabel: "Delete",
+refreshLabel: "Refresh entries",
+loadingEntries: "Loading entries…",
+noEntries: "No entries yet. Add your first one above.",
+entriesCount: "entries",
+incomeEntriesTitle: "Income entries",
+expenseEntriesTitle: "Expense entries",
+
+
 // BUSINESS RECOMMENDATION
 
 businessRecommendation: "Business Recommendation",
@@ -1345,6 +1358,20 @@ expenseTypeRequired:
 detailsSaved:
   "आपकी प्रविष्टि सफलतापूर्वक सहेजी गई।",
 
+
+dateLabel: "तारीख",
+amountLabel: "राशि",
+actionsLabel: "कार्रवाई",
+save: "सहेजें",
+deleteLabel: "हटाएँ",
+refreshLabel: "प्रविष्टियाँ रीफ़्रेश करें",
+loadingEntries: "प्रविष्टियाँ लोड हो रही हैं…",
+noEntries: "अभी कोई प्रविष्टि नहीं है। ऊपर अपनी पहली प्रविष्टि जोड़ें।",
+entriesCount: "प्रविष्टियाँ",
+incomeEntriesTitle: "आय की प्रविष्टियाँ",
+expenseEntriesTitle: "खर्च की प्रविष्टियाँ",
+
+
 // =====================================================
 // BUSINESS RECOMMENDATION
 // =====================================================
@@ -2369,6 +2396,19 @@ expenseTypeRequired:
 
 detailsSaved:
   "तुमची नोंद यशस्वीरित्या जतन झाली.",
+
+dateLabel: "तारीख",
+amountLabel: "रक्कम",
+actionsLabel: "कृती",
+save: "जतन करा",
+deleteLabel: "हटवा",
+refreshLabel: "नोंदी पुन्हा लोड करा",
+loadingEntries: "नोंदी लोड होत आहेत…",
+noEntries: "अजून कोणतीही नोंद नाही. वर तुमची पहिली नोंद जोडा.",
+entriesCount: "नोंदी",
+incomeEntriesTitle: "उत्पन्नाच्या नोंदी",
+expenseEntriesTitle: "खर्चाच्या नोंदी",
+
 
 // =====================================================
 // BUSINESS RECOMMENDATION

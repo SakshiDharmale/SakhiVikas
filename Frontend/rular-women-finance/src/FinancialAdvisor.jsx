@@ -46,6 +46,11 @@ function monthLabel(period, language) {
     : null;
 }
 
+function monthDate(period) {
+  const match = String(period ?? "").match(/(\d{4})[-/](\d{1,2})/);
+  return match ? new Date(Number(match[1]), Number(match[2]) - 1, 1) : null;
+}
+
 /* ---------------------------------------
    BACKEND DATA NORMALIZATION
    Response shape of GET /getAlAnalytics:
@@ -264,17 +269,20 @@ export default function FinancialAdvisor({ language }) {
       ? L("faThisMonth", "This month")
       : `${Math.abs(c).toFixed(1)}% ${c >= 0 ? L("faMore", "more") : L("faLess", "less")} ${L("faThanLast", "than last month")}`;
 
-  /* last 3 months */
-  const base = [...data.history].reverse().slice(-3);
-  const list = base.length ? base : [{ period: "current", income, expense, savings: balance }];
+  /* Show the last three completed calendar months, excluding the current month. */
+  const currentMonthStart = new Date();
+  currentMonthStart.setDate(1);
+  currentMonthStart.setHours(0, 0, 0, 0);
+  const list = data.history
+    .map((month) => ({ ...month, monthDate: monthDate(month.start || month.period) }))
+    .filter((month) => month.monthDate && month.monthDate < currentMonthStart)
+    .sort((a, b) => a.monthDate - b.monthDate)
+    .slice(-3);
   const months = list.map((m, i) => {
     const inc = num(m.income), exp = num(m.expense);
     const saved = m.savings === undefined || m.savings === null ? inc - exp : num(m.savings);
-    const back = list.length - 1 - i;
-    const label =
-      monthLabel(m.period, language) ||
-      (back === 0 ? L("faThisMonth", "This month") : back === 1 ? L("faLastMonth", "Last month") : `${back} ${L("faMonthsAgo", "months ago")}`);
-    return { label, now: back === 0, inc, exp, saved, rate: inc > 0 ? Math.max(0, Math.min(100, (saved / inc) * 100)) : 0 };
+    const label = monthLabel(m.start || m.period, language) || "";
+    return { label, inc, exp, saved, rate: inc > 0 ? Math.max(0, Math.min(100, (saved / inc) * 100)) : 0 };
   });
   const maxVal = Math.max(...months.flatMap((m) => [m.inc, m.exp, Math.max(m.saved, 0)]), 1);
   const sum = months.reduce((s, m) => ({ inc: s.inc + m.inc, exp: s.exp + m.exp, saved: s.saved + m.saved }), { inc: 0, exp: 0, saved: 0 });
@@ -385,13 +393,14 @@ export default function FinancialAdvisor({ language }) {
               />
 
               <div className="fa-months" key={view}>
-                {months.map((m, i) => {
+                {months.length === 0 ? (
+                  <p className="empty-chart">{L("faNoCompletedMonths", "No completed monthly data is available yet.")}</p>
+                ) : months.map((m, i) => {
                   const diff = i > 0 ? m.rate - months[i - 1].rate : null;
                   return (
                     <div className="fa-month" key={i}>
                       <div className="fa-month-head">
                         <h3>{m.label}</h3>
-                        {m.now && <span className="fa-now">{L("faThisMonth", "This month")}</span>}
                         {view === "amount" && <span className="fa-month-rate">{L("faSavedShort", "Saved")} {m.rate.toFixed(0)}%</span>}
                       </div>
 
@@ -431,7 +440,7 @@ export default function FinancialAdvisor({ language }) {
                   {view === "amount" ? (
                     <>
                       <p>{L("faChartHint", "Each bar shows rupees. A longer bar means more money. Dark blue = earned, blue = spent, sky blue = saved.")}</p>
-                      <p>{L("faOver", "In these months you earned")} <b>{rupees(sum.inc)}</b>, {L("faSpentWord", "spent")} <b>{rupees(sum.exp)}</b> {L("faAndSaved", "and saved")} <b>{rupees(sum.saved)}</b>.</p>
+                      {months.length > 0 && <p>{L("faOver", "In these months you earned")} <b>{rupees(sum.inc)}</b>, {L("faSpentWord", "spent")} <b>{rupees(sum.exp)}</b> {L("faAndSaved", "and saved")} <b>{rupees(sum.saved)}</b>.</p>}
                     </>
                   ) : (
                     <p>{L("faRateHint", "The black line is your goal: keep ₹20 from every ₹100. A bar that reaches the line or goes past it means you are saving well.")}</p>

@@ -1,10 +1,11 @@
+
 /* Main page */
 .handicraft-page {
   min-height: 100vh;
   padding: 28px 24px 48px;
   box-sizing: border-box;
-  background: #ffffff;
-  color: #1F3A3D;
+  background: #fff5f8;
+  color: #4a1833;
   font-family: Arial, sans-serif;
 }
 
@@ -18,7 +19,7 @@
 .handicraft-header {
   margin-bottom: 28px;
   padding-bottom: 18px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #f3d8e4;
 }
 
 .handicraft-header h1 {
@@ -26,13 +27,13 @@
   font-family: Georgia, serif;
   font-size: 30px;
   font-weight: 500;
-  color: #1F3A3D;
+  color: #581d40;
   text-align: left;
 }
 
 .handicraft-header p {
   margin: 0;
-  color: #6b7472;
+  color: #806b78;
   font-size: 15px;
   line-height: 1.7;
   text-align: left;
@@ -50,7 +51,7 @@
   align-items: start;
   gap: 22px;
   padding: 22px 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #f3d8e4;
 }
 
 .handicraft-card:first-child {
@@ -63,7 +64,7 @@
   height: 165px;
   overflow: hidden;
   border-radius: 8px;
-  background: #f3efe7;
+  background: #fce7ef;
 }
 
 .handicraft-image {
@@ -85,7 +86,7 @@
 
 .handicraft-content h2 {
   margin: 0 0 9px;
-  color: #1F3A3D;
+  color: #581d40;
   font-family: Georgia, serif;
   font-size: 21px;
   font-weight: 500;
@@ -95,7 +96,7 @@
 
 .handicraft-description {
   margin: 0 0 13px;
-  color: #626d69;
+  color: #75636e;
   font-size: 14px;
   line-height: 1.7;
   text-align: left;
@@ -113,7 +114,7 @@
   display: inline-flex;
   align-items: flex-start;
   gap: 8px;
-  color: blue;
+  color: #a3306f;
   font-size: 14px;
   line-height: 1.6;
   text-decoration: none;
@@ -128,7 +129,7 @@
 }
 
 .handicraft-link:hover {
-  color: #174d40;
+  color: #7e2158;
   text-decoration: underline;
 }
 
@@ -136,10 +137,10 @@
 .handicraft-goal {
   margin: 14px 0 0;
   padding: 10px 12px;
-  border-left: 3px solid rgb(193, 190, 190);
+  border-left: 3px solid #c77da0;
   border-radius: 0 5px 5px 0;
-  background: rgb(242, 241, 241);
-  color: #455852;
+  background: #fceaf1;
+  color: #684557;
   font-size: 13px;
   line-height: 1.7;
   text-align: left;

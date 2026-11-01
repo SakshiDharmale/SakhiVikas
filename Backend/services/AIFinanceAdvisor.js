@@ -82,6 +82,13 @@ export async function generateFinancialadvice(Analytics, language ) {
     available data is insufficient.
     - Do not present assumptions as facts.
 
+    CURRENCY AND ANALYSIS RULES
+    - Always express every monetary amount in Indian rupees, using "₹" or "rupees". Never use "$", dollars, or any other currency symbol or currency unit.
+    - If an input amount is shown in another currency, do not convert it unless the backend provides the rupee equivalent; explain that the rupee amount is unavailable.
+    - Focus on the most useful analytical findings from the provided data, such as meaningful changes, high-spending categories, savings patterns, or notable financial-health indicators.
+    - Do not list or repeat every money-related value in the input. Include only figures that support a clear finding or practical suggestion.
+    - Base comparisons and conclusions strictly on the provided analytics; do not create new calculations or infer causes.
+
     CALCULATION RULES
 
     The backend is responsible for financial calculations.
@@ -133,7 +140,7 @@ export async function generateFinancialadvice(Analytics, language ) {
     Before responding, check that every explanatory sentence is in ${outputLanguage}.
     ${languageInstruction}
     `;
-    const primaryModel = 'gemini-3.5-flash';
+    const primaryModel = 'gemini-3.6-flash';
     for (let attempt = 0; attempt < 3; attempt += 1) {
         try {
             const response = await client.models.generateContent({
@@ -147,10 +154,10 @@ export async function generateFinancialadvice(Analytics, language ) {
             }
 
             if (attempt === 2) {
-                console.warn(`${primaryModel} remains unavailable; trying Gemini 3.5 Flash-Lite.`);
+                console.warn(`${primaryModel} remains unavailable; trying Gemini 3.6 Flash-Lite.`);
                 try {
                     const fallbackResponse = await client.models.generateContent({
-                        model: 'gemini-3.5-flash-lite',
+                        model: 'gemini-3.6-flash-lite',
                         contents: prompt
                     });
                     return fallbackResponse.text;
