@@ -24,9 +24,19 @@ npm install
 npm run dev
 ```
 
-Open the URL Vite prints and visit Business Recommendations after selecting a language. The form sends investment, daily hours, one skill, land availability and experience to `POST /recommend`, then displays the model's ranked businesses and reasons. Other profile fields are currently not used by the model. Model-generated business names and reasons are currently in English.
+Open the URL Vite prints and visit Business Recommendations after selecting a language. That route shows the recommendation model's own frontend, embedded in the main app. The recommendation frontend sends profile details to the FastAPI `POST /recommend` endpoint and displays the model's ranked businesses and reasons.
 
-To change the recommendation API URL, copy `.env.example` to `.env` inside `Frontend/rular-women-finance` and edit `VITE_RECOMMENDATION_API_URL`. For a deployed frontend, configure its origin in `recommendationmodel/api/main.py` CORS settings and use an HTTPS API URL.
+The Business Recommendations route embeds the original recommendation model frontend. Start that Vite app in another terminal:
+
+```powershell
+cd recommendationmodel/frontend
+npm install
+npm run dev -- --port 5174
+```
+
+Its frontend calls the FastAPI service on port 8000. Set `VITE_API_URL=http://127.0.0.1:8000` in `recommendationmodel/frontend/.env` if needed. In the main frontend, `VITE_RECOMMENDATION_FRONTEND_URL` selects the embedded frontend URL (default `http://localhost:5174`).
+
+To change the embedded recommendation frontend URL, copy `.env.example` to `.env` inside `Frontend/rular-women-finance` and edit `VITE_RECOMMENDATION_FRONTEND_URL`. Configure `VITE_API_URL` in `recommendationmodel/frontend/.env` for the recommendation API. For deployment, serve the recommendation frontend and API over HTTPS and allow the API to receive requests from the recommendation frontend origin in `recommendationmodel/api/main.py` CORS settings.
 
 ## Run the finance backend
 
