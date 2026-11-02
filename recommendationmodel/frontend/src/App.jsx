@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckCircle2, Sparkles } from "lucide-react";
-import Navbar from "./components/Navbar.jsx";
 import ProfileForm from "./components/ProfileForm.jsx";
 import RecommendationResults from "./components/RecommendationResults.jsx";
 import { getRecommendations } from "./services/recommendationApi.js";
@@ -36,8 +35,6 @@ export default function App() {
     <div className="app-shell" id="top">
       <div className="ambient-shape ambient-peach" />
       <div className="ambient-shape ambient-pink" />
-      <Navbar t={t} />
-
       {page === "profile" && (
         <>
           <main className="welcome-layout">

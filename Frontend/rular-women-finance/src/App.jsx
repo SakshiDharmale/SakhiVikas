@@ -5,7 +5,7 @@ import Login from "./login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import ExpenseTracker from "./ExpenseTracker";
-import BusinessRecommendations from "./BusinessRecommendations";
+import RecommendationModelPage from "./RecommendationModelPage";
 import {BusinessInfoHub} from "./BusinessInfoHub";
 import Navbar from "./Components/Navbar";
 import FinancialAdvisor from "./FinancialAdvisor";
@@ -108,7 +108,7 @@ function App() {
           path="/business-recommendations"
           element={
             language ? (
-              <BusinessRecommendations language={language} />
+              <RecommendationModelPage language={language} />
             ) : (
               <Navigate to="/" replace />
             )

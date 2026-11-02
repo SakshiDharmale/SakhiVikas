@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException
@@ -43,6 +43,7 @@ class UserInput(BaseModel):
     skill: str = Field(min_length=1, max_length=100)
     land: int = Field(ge=0, le=1)
     experience: int = Field(ge=0, le=50)
+    language: Literal["en", "hi", "mr"] = "en"
 
 
 def make_json_safe(result: Any) -> Any:

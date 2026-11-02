@@ -26,6 +26,7 @@ export async function getRecommendations(profile) {
     skill: skillIds[selectedSkill],
     land: profile.land_available ? 1 : 0,
     experience: experienceLevels[profile.experience] ?? 0,
+    language: profile.language,
   };
 
   const response = await fetch(`${API_URL}/recommend`, {
