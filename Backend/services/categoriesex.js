@@ -1,4 +1,4 @@
-import { getSpendingGroup } from "../utilities/spendingGroup.js";
+import { getSpendingGroup } from "../utilities/SpendingGroup.js";
 import { getExpenseOverview } from "./analytics.js";
 
 export async function categorywiseAnalysis(userid, range = "monthly") {
