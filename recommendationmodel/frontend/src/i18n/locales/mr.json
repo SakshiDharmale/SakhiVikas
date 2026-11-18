@@ -61,6 +61,27 @@
   "validationVillage": "गावाचे नाव 100 अक्षरांपेक्षा मोठे असू शकत नाही.",
   "validationDistrict": "जिल्ह्याचे नाव 100 अक्षरांपेक्षा मोठे असू शकत नाही.",
   "footer": "स्थानिक कौशल्यांना स्थानिक संधींशी जोडण्यासाठी तयार केलेले.",
+  "genericBusinessIdea": "व्यवसायाची कल्पना {{number}}",
+  "businesses": {
+    "Dairy Farming": "दुग्ध व्यवसाय", "Goat Farming": "शेळीपालन", "Poultry Farming": "कुक्कुटपालन",
+    "Mushroom Farming": "अळींबी शेती", "Vegetable Farming": "भाजीपाला शेती", "Papad Making": "पापड बनवणे",
+    "Pickle Making": "लोणचे बनवणे", "Homemade Snacks": "घरगुती फराळ", "Tiffin Service": "डबा सेवा",
+    "Tailoring": "शिवणकाम", "Embroidery": "भरतकाम", "Beauty Service": "सौंदर्य सेवा",
+    "Candle Making": "मेणबत्ती बनवणे", "Soap Making": "साबण बनवणे", "Agarbatti Making": "अगरबत्ती बनवणे",
+    "Nursery": "रोपवाटिका", "Flower Farming": "फुलशेती", "Flour Mill": "पीठ गिरणी",
+    "Grocery Shop": "किराणा दुकान", "Mobile Repair": "मोबाईल दुरुस्ती", "Computer Service": "संगणक दुरुस्ती",
+    "Handicraft": "हस्तकला", "Bamboo Products": "बांबू उत्पादने", "Clothing Reselling": "कपड्यांची विक्री",
+    "Spice Powder": "मसाला पावडर", "Millet Products": "भरड धान्य उत्पादने", "Goat Feed Production": "शेळीचा चारा उत्पादन",
+    "Milk Products": "दुग्धजन्य पदार्थ", "Food Stall": "खाद्यपदार्थांचा स्टॉल", "Online Selling": "ऑनलाइन विक्री"
+  },
+  "reasons": {
+    "Your investment fits the estimated investment range.": "तुमची गुंतवणूक अंदाजित गुंतवणूक मर्यादेत आहे.",
+    "Your skill matches the required skill.": "तुमचे कौशल्य आवश्यक कौशल्याशी जुळते.",
+    "Your available time is sufficient.": "तुमच्याकडे पुरेसा वेळ उपलब्ध आहे.",
+    "This business does not require land.": "या व्यवसायासाठी जमिनीची आवश्यकता नाही.",
+    "The dataset indicates high demand.": "माहितीनुसार या व्यवसायाला जास्त मागणी आहे.",
+    "This business was selected based on the model's ranking.": "हा व्यवसाय मॉडेलच्या क्रमवारीनुसार निवडला आहे."
+  },
   "skillsOptions": {
     "Cooking": "स्वयंपाक",
     "Tailoring": "शिवणकाम",
@@ -73,4 +94,3 @@
     "Machinery": "यंत्रसामग्री"
   }
 }
-
