@@ -18,6 +18,12 @@ function listValue(value) {
   return [];
 }
 
+function translateOutput(t, value, namespace) {
+  if (typeof value !== "string" || !value.trim()) return value;
+  const translations = t(namespace, { returnObjects: true, defaultValue: {} });
+  return translations?.[value] || value;
+}
+
 export default function RecommendationResults({ t, results, status, error, onRetry, onEdit }) {
   if (status === "loading") {
     return <section className="state-card" aria-live="polite"><div className="loader-orbit"><span /></div><h1>{t("loadingTitle")}</h1><p className="muted">{t("loadingBody")}</p></section>;
@@ -42,15 +48,20 @@ export default function RecommendationResults({ t, results, status, error, onRet
       <div className="recommendation-scroll" aria-label={t("resultsTitle")}>
         <div className="recommendation-grid">
         {visibleResults.map((item, index) => {
-          const name = firstValue(item, ["business", "name", "title", "business_name"]) || `Business idea ${index + 1}`;
-          const description = firstValue(item, ["description", "summary", "overview"]);
+          const rawName = firstValue(item, ["business", "name", "title", "business_name"]);
+          const name = translateOutput(t, rawName, "businesses") || t("genericBusinessIdea", { number: index + 1, defaultValue: "Business idea " + (index + 1) });
+          const description = translateOutput(t, firstValue(item, ["description", "summary", "overview"]), "businessOutput");
           const investment = firstValue(item, ["estimated_investment_inr", "estimated_cost", "investment", "startup_cost"]);
           const rawReason = firstValue(item, ["reasons", "why_it_matches", "reason", "match_reason", "why_recommended"]);
-          const reason = Array.isArray(rawReason) ? rawReason.join(" ") : rawReason || description || t("genericMatchReason");
-          const requirements = listValue(firstValue(item, ["requirements", "resources", "what_you_need"]));
-          const challenges = listValue(firstValue(item, ["challenges", "risks", "considerations"]));
+          const reason = Array.isArray(rawReason)
+            ? rawReason.map((value) => translateOutput(t, value, "reasons")).join(" ")
+            : translateOutput(t, rawReason, "reasons") || description || t("genericMatchReason");
+          const requirements = listValue(firstValue(item, ["requirements", "resources", "what_you_need"]))
+            .map((value) => translateOutput(t, value, "businessOutput"));
+          const challenges = listValue(firstValue(item, ["challenges", "risks", "considerations"]))
+            .map((value) => translateOutput(t, value, "businessOutput"));
           return (
-            <article className="recommendation-card" key={item.id || `${name}-${index}`}>
+            <article className="recommendation-card" key={item.id || name + "-" + index}>
               <div className="recommendation-topline"><span className="recommendation-number">0{index + 1}</span><span className="match-badge"><BadgeCheck size={14} /> {t("whyMatches")}</span></div>
               <h2>{name}</h2>
               {description && <p className="recommendation-description">{description}</p>}
@@ -68,6 +79,3 @@ export default function RecommendationResults({ t, results, status, error, onRet
     </section>
   );
 }
-
-
-
