@@ -61,6 +61,27 @@
   "validationVillage": "Village name cannot be longer than 100 characters.",
   "validationDistrict": "District name cannot be longer than 100 characters.",
   "footer": "Built to help local skills find local opportunities.",
+  "genericBusinessIdea": "Business idea {{number}}",
+  "businesses": {
+    "Dairy Farming": "Dairy Farming", "Goat Farming": "Goat Farming", "Poultry Farming": "Poultry Farming",
+    "Mushroom Farming": "Mushroom Farming", "Vegetable Farming": "Vegetable Farming", "Papad Making": "Papad Making",
+    "Pickle Making": "Pickle Making", "Homemade Snacks": "Homemade Snacks", "Tiffin Service": "Tiffin Service",
+    "Tailoring": "Tailoring", "Embroidery": "Embroidery", "Beauty Service": "Beauty Service",
+    "Candle Making": "Candle Making", "Soap Making": "Soap Making", "Agarbatti Making": "Agarbatti Making",
+    "Nursery": "Nursery", "Flower Farming": "Flower Farming", "Flour Mill": "Flour Mill",
+    "Grocery Shop": "Grocery Shop", "Mobile Repair": "Mobile Repair", "Computer Service": "Computer Service",
+    "Handicraft": "Handicraft", "Bamboo Products": "Bamboo Products", "Clothing Reselling": "Clothing Reselling",
+    "Spice Powder": "Spice Powder", "Millet Products": "Millet Products", "Goat Feed Production": "Goat Feed Production",
+    "Milk Products": "Milk Products", "Food Stall": "Food Stall", "Online Selling": "Online Selling"
+  },
+  "reasons": {
+    "Your investment fits the estimated investment range.": "Your investment fits the estimated investment range.",
+    "Your skill matches the required skill.": "Your skill matches the required skill.",
+    "Your available time is sufficient.": "Your available time is sufficient.",
+    "This business does not require land.": "This business does not require land.",
+    "The dataset indicates high demand.": "The dataset indicates high demand.",
+    "This business was selected based on the model's ranking.": "This business was selected based on the model's ranking."
+  },
   "skillsOptions": {
     "Cooking": "Cooking",
     "Tailoring": "Tailoring",
@@ -73,4 +94,3 @@
     "Machinery": "Machinery"
   }
 }
-
