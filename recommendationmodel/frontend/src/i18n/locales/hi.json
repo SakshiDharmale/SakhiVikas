@@ -61,6 +61,27 @@
   "validationVillage": "गाँव का नाम 100 अक्षरों से अधिक नहीं हो सकता।",
   "validationDistrict": "जिले का नाम 100 अक्षरों से अधिक नहीं हो सकता।",
   "footer": "स्थानीय कौशलों को स्थानीय अवसरों से जोड़ने के लिए बनाया गया।",
+  "genericBusinessIdea": "व्यवसाय का विचार {{number}}",
+  "businesses": {
+    "Dairy Farming": "डेयरी फार्मिंग", "Goat Farming": "बकरी पालन", "Poultry Farming": "मुर्गी पालन",
+    "Mushroom Farming": "मशरूम की खेती", "Vegetable Farming": "सब्ज़ी की खेती", "Papad Making": "पापड़ बनाना",
+    "Pickle Making": "अचार बनाना", "Homemade Snacks": "घर के बने नाश्ते", "Tiffin Service": "टिफिन सेवा",
+    "Tailoring": "सिलाई", "Embroidery": "कढ़ाई", "Beauty Service": "ब्यूटी सेवा",
+    "Candle Making": "मोमबत्ती बनाना", "Soap Making": "साबुन बनाना", "Agarbatti Making": "अगरबत्ती बनाना",
+    "Nursery": "नर्सरी", "Flower Farming": "फूलों की खेती", "Flour Mill": "आटा चक्की",
+    "Grocery Shop": "किराना दुकान", "Mobile Repair": "मोबाइल मरम्मत", "Computer Service": "कंप्यूटर सेवा",
+    "Handicraft": "हस्तशिल्प", "Bamboo Products": "बांस के उत्पाद", "Clothing Reselling": "कपड़ों की बिक्री",
+    "Spice Powder": "मसाला पाउडर", "Millet Products": "मोटे अनाज के उत्पाद", "Goat Feed Production": "बकरी का चारा बनाना",
+    "Milk Products": "दूध के उत्पाद", "Food Stall": "खाने का स्टॉल", "Online Selling": "ऑनलाइन बिक्री"
+  },
+  "reasons": {
+    "Your investment fits the estimated investment range.": "आपका निवेश अनुमानित निवेश सीमा में है।",
+    "Your skill matches the required skill.": "आपका कौशल आवश्यक कौशल से मेल खाता है।",
+    "Your available time is sufficient.": "आपके पास पर्याप्त समय उपलब्ध है।",
+    "This business does not require land.": "इस व्यवसाय के लिए जमीन की आवश्यकता नहीं है।",
+    "The dataset indicates high demand.": "आंकड़ों के अनुसार इसकी मांग अधिक है।",
+    "This business was selected based on the model's ranking.": "यह व्यवसाय मॉडल की रैंकिंग के आधार पर चुना गया है।"
+  },
   "skillsOptions": {
     "Cooking": "खाना बनाना",
     "Tailoring": "सिलाई",
@@ -73,4 +94,3 @@
     "Machinery": "मशीनरी"
   }
 }
-
