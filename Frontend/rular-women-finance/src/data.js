@@ -176,9 +176,33 @@ export const T = {
       
 dashboardWelcomeDesc:
   "Explore simple tools to manage your money, discover business opportunities, and plan a better financial future.",
-  
+  dashboardExploreTitle: "Explore Your Options",
+dashboardExploreDesc: "Choose a service to get started.",
 
-    // =====================================================
+dashboardExpenseFooter: "Quick Logging",
+dashboardExpenseDetail: "Track Your Savings",
+
+dashboardBusinessFooter: "Filter by Budget",
+dashboardBusinessDetail: "Business Ideas",
+
+dashboardInfoFooter: "Step-by-Step Guides",
+dashboardInfoDetail: "Startup Information",
+
+dashboardAdviceFooter: "Financial Planning",
+dashboardAdviceDetail: "Savings & Schemes",
+
+dashboardFooter: "SakhiVikas — Supporting women towards financial independence.",
+// =====================================================
+// Navigation Bar
+// =====================================================
+navChooseLanguage: "Choose Language",
+navDashboard: "Dashboard",
+navLogin: "Login",
+navLogout: "Logout",
+navOpenMenu: "Open menu",
+navCloseMenu: "Close menu",
+
+// =====================================================
 // EXPENSE TRACKER
 // =====================================================
 
@@ -302,6 +326,7 @@ noEntries: "No entries yet. Add your first one above.",
 entriesCount: "entries",
 incomeEntriesTitle: "Income entries",
 expenseEntriesTitle: "Expense entries",
+notePlaceholder: "What was this income for?",
 
 
 // BUSINESS RECOMMENDATION
@@ -474,6 +499,8 @@ otherProducts: "Beauty services, tutoring, cleaning services, plant nurseries, a
 otherGettingStarted: "Identify a useful service, assess demand, calculate costs, and begin on a small scale.",
 otherRequirements: "Relevant skills, basic tools or materials, starting capital, and a way to reach customers.",
 otherTips: "Start small, keep income and expense records, and improve your service using customer feedback.",
+
+backToBusinessInfo: "Back to Business Information",
 
 tailoringSections: [
   {
@@ -1180,7 +1207,7 @@ faDone: "done",
 faNoAdvice: "No advice yet. Add more income and spending to get tips.",
 faMissingToken:"Please log in again. Your authentication token is missing.",
 faSessionExpired: "Your login session has expired. Please log in again.",
-    
+backToDashboard: "Back to Dashboard",    
       // =====================================================
     // COMMON
     // =====================================================
@@ -1257,8 +1284,32 @@ faSessionExpired: "Your login session has expired. Please log in again.",
     logout:"लॉग आउट",
     home:"डैशबोर्ड",
     dashboardWelcomeDesc:"अपने पैसों का प्रबंधन करने, व्यवसाय के नए अवसर खोजने और बेहतर आर्थिक भविष्य की योजना बनाने के लिए सरल सुविधाओं का उपयोग करें।",
-  
-    // =====================================================
+    dashboardExploreTitle: "अपने विकल्पों को देखें",
+dashboardExploreDesc: "शुरू करने के लिए एक सेवा चुनें।",
+
+dashboardExpenseFooter: "आसानी से जानकारी दर्ज करें",
+dashboardExpenseDetail: "अपनी बचत का हिसाब रखें",
+
+dashboardBusinessFooter: "बजट के अनुसार चुनें",
+dashboardBusinessDetail: "व्यवसाय के विचार",
+
+dashboardInfoFooter: "चरण-दर-चरण मार्गदर्शन",
+dashboardInfoDetail: "व्यवसाय शुरू करने की जानकारी",
+
+dashboardAdviceFooter: "वित्तीय योजना",
+dashboardAdviceDetail: "बचत और योजनाएँ",
+
+dashboardFooter: "सखी विकास — महिलाओं को वित्तीय आत्मनिर्भरता की ओर बढ़ने में सहयोग।",
+// =====================================================
+// Navigation Bar
+// =====================================================
+navChooseLanguage: "भाषा चुनें",
+navDashboard: "डैशबोर्ड",
+navLogin: "लॉगिन",
+navLogout: "लॉगआउट",
+navOpenMenu: "मेनू खोलें",
+navCloseMenu: "मेनू बंद करें",
+// =====================================================
 // EXPENSE TRACKER
 // =====================================================
 
@@ -1370,6 +1421,7 @@ noEntries: "अभी कोई प्रविष्टि नहीं है�
 entriesCount: "प्रविष्टियाँ",
 incomeEntriesTitle: "आय की प्रविष्टियाँ",
 expenseEntriesTitle: "खर्च की प्रविष्टियाँ",
+notePlaceholder: "यह आय किस लिए थी?",
 
 
 // =====================================================
@@ -1545,6 +1597,8 @@ otherProducts: "ब्यूटी सेवाएँ, ट्यूशन, स�
 otherGettingStarted: "उपयोगी सेवा चुनें, माँग समझें, लागत निकालें और छोटे स्तर से शुरुआत करें।",
 otherRequirements: "संबंधित कौशल, बुनियादी उपकरण या सामग्री, शुरुआती पूँजी और ग्राहकों तक पहुँचने का तरीका।",
 otherTips: "छोटे स्तर से शुरुआत करें, आय-खर्च का रिकॉर्ड रखें और ग्राहकों की राय से सुधार करें।",
+
+backToBusinessInfo: "व्यवसाय जानकारी पर वापस जाएं",
 
 tailoringSections: [
   {
@@ -2246,7 +2300,7 @@ faMissingToken:
   "कृपया फिर से लॉगिन करें। आपका प्रमाणीकरण टोकन उपलब्ध नहीं है।",
 faSessionExpired:
   "आपका लॉगिन सत्र समाप्त हो गया है। कृपया फिर से लॉगिन करें।",
-    
+  backToDashboard: "डैशबोर्ड पर वापस जाएं", 
       // =====================================================
     // COMMON
     // =====================================================
@@ -2321,9 +2375,32 @@ faSessionExpired:
     logout:"लॉगआउट",
     home:"डॅशबोर्ड",
     dashboardWelcomeDesc:"तुमच्या पैशांचे व्यवस्थापन करण्यासाठी, व्यवसायाच्या नवीन संधी शोधण्यासाठी आणि चांगल्या आर्थिक भविष्यासाठी नियोजन करण्यासाठी सोप्या सुविधांचा वापर करा.",
+    dashboardExploreTitle: "तुमचे पर्याय पहा",
+dashboardExploreDesc: "सुरुवात करण्यासाठी एक सेवा निवडा.",
 
+dashboardExpenseFooter: "सहज नोंदणी करा",
+dashboardExpenseDetail: "तुमच्या बचतीचा मागोवा घ्या",
 
-    // =====================================================
+dashboardBusinessFooter: "बजेटनुसार निवडा",
+dashboardBusinessDetail: "व्यवसायाच्या कल्पना",
+
+dashboardInfoFooter: "टप्प्याटप्प्याने मार्गदर्शन",
+dashboardInfoDetail: "व्यवसाय सुरू करण्याची माहिती",
+
+dashboardAdviceFooter: "आर्थिक नियोजन",
+dashboardAdviceDetail: "बचत आणि योजना",
+
+dashboardFooter: "सखी विकास — महिलांना आर्थिक स्वावलंबनाच्या दिशेने वाटचाल करण्यासाठी सहकार्य।",
+// =====================================================
+// Navigation bar
+// =====================================================
+navChooseLanguage: "भाषा निवडा",
+navDashboard: "डॅशबोर्ड",
+navLogin: "लॉगिन",
+navLogout: "लॉगआउट",
+navOpenMenu: "मेनू उघडा",
+navCloseMenu: "मेनू बंद करा",
+// =====================================================
 // EXPENSE TRACKER
 // =====================================================
 
@@ -2408,6 +2485,7 @@ noEntries: "अजून कोणतीही नोंद नाही. वर
 entriesCount: "नोंदी",
 incomeEntriesTitle: "उत्पन्नाच्या नोंदी",
 expenseEntriesTitle: "खर्चाच्या नोंदी",
+notePlaceholder: "हे उत्पन्न कशासाठी होते?",
 
 
 // =====================================================
@@ -2549,6 +2627,7 @@ otherGettingStarted: "उपयुक्त सेवा निवडा, मा
 otherRequirements: "संबंधित कौशल्ये, मूलभूत साधने किंवा साहित्य, सुरुवातीचे भांडवल आणि ग्राहकांपर्यंत पोहोचण्याचा मार्ग.",
 otherTips: "छोट्या प्रमाणात सुरुवात करा, उत्पन्न-खर्चाची नोंद ठेवा आणि ग्राहकांच्या अभिप्रायानुसार सुधारणा करा.",
 
+backToBusinessInfo: "व्यवसाय माहितीवर परत जा",
 
 tailoringSections: [
   {
@@ -3172,6 +3251,7 @@ faDone: "पूर्ण",
 faNoAdvice: "अद्याप सल्ला उपलब्ध नाही. सल्ले मिळवण्यासाठी तुमची कमाई आणि खर्च नोंदवा.",
 faMissingToken:"कृपया पुन्हा लॉगिन करा. तुमचा प्रमाणीकरण टोकन उपलब्ध नाही.",
 faSessionExpired:"तुमचे लॉगिन सत्र संपले आहे. कृपया पुन्हा लॉगिन करा.",
+backToDashboard: "डॅशबोर्डवर परत जा",
       // =====================================================
     // COMMON
     // =====================================================

@@ -1,11 +1,13 @@
-
-
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Globe, LayoutDashboard, UserRound } from "lucide-react";
+import { T } from "../data";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const language = localStorage.getItem("language") || "en";
+  const t = T[language] || T.en;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -29,9 +31,9 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const navLinks = [
-    { name: "Choose Language", path: "/", icon: Globe },
-    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-  ];
+  { name: t.navChooseLanguage, path: "/", icon: Globe },
+  { name: t.navDashboard, path: "/dashboard", icon: LayoutDashboard },
+];
 
   const handleLogin = () => {
     setIsMenuOpen(false);
@@ -88,7 +90,7 @@ const Navbar = () => {
           className="sakhi-login-button"
           onClick={isLoggedIn ? handleLogout : handleLogin}
         >
-          {isLoggedIn ? "Logout" : "Login"}
+          {isLoggedIn ? t.navLogout : t.navLogin}
         </button>
       </div>
 
@@ -97,7 +99,7 @@ const Navbar = () => {
   type="button"
   className="sakhi-menu-toggle"
   onClick={() => setIsMenuOpen((prev) => !prev)}
-  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+  aria-label={isMenuOpen ? t.navCloseMenu : t.navOpenMenu}
   aria-expanded={isMenuOpen}
 >
   {isMenuOpen ? <X size={25} /> : <Menu size={25} />}
@@ -128,7 +130,7 @@ const Navbar = () => {
           type="button"
           className="sakhi-mobile-login"
           onClick={isLoggedIn ? handleLogout : handleLogin}>
-          {isLoggedIn ? "Logout" : "Login"}
+          {isLoggedIn ? t.navLogout : t.navLogin}
         </button>
       </div>
     </nav>

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowDownLeft, ArrowUpRight, LoaderCircle, Plus, RefreshCw, Save, Trash2 } from "lucide-react";
+import { ArrowDownLeft, ArrowUpRight, ArrowLeft, LoaderCircle, Plus, RefreshCw, Save, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { T } from "./data";
 import "./ExpenseTracker.css";
 
@@ -27,6 +28,7 @@ async function apiRequest(path, token, options = {}) {
 
 const ExpenseTracker = ({ language = "en" }) => {
   const t = T[language] || T.en;
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("income");
   const [incomeAmount, setIncomeAmount] = useState("");
   const [businessType, setBusinessType] = useState("");
@@ -179,10 +181,33 @@ const ExpenseTracker = ({ language = "en" }) => {
   );
 
   return (
-    <main className="expense-page">
-      <div className="expense-layout">
-        <section className="expense-card">
-          <div className="expense-heading"><span className="expense-heading-icon"><Plus size={22} /></span><div><h1>{t.expenseTrackerTitle || "Income & Expense Tracker"}</h1><p>{t.expenseTrackerDesc || "Record your money and keep every entry up to date."}</p></div></div>
+  <main className="expense-page">
+    <div className="expense-layout">
+
+      {/* Back Button - Outside the Card, Left Side */}
+      <button
+        type="button"
+        className="expense-back-button"
+        onClick={() => navigate("/dashboard")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToDashboard || "Back to Dashboard"}</span>
+      </button>
+
+      <section className="expense-card">
+          <div className="expense-heading">
+  <span className="expense-heading-icon">
+    <Plus size={22} />
+  </span>
+
+  <div className="expense-heading-text">
+    <h1>{t.expenseTrackerTitle || "Income & Expense Tracker"}</h1>
+    <p>
+      {t.expenseTrackerDesc ||
+        "Record your money and keep every entry up to date."}
+    </p>
+  </div>
+</div>
           <div className="expense-tabs" role="tablist">
             <button type="button" role="tab" aria-selected={activeTab === "income"} className={`expense-tab ${activeTab === "income" ? "active-income" : ""}`} onClick={() => { setActiveTab("income"); setError(""); setNotice(""); }}><ArrowDownLeft size={18} />{t.income}</button>
             <button type="button" role="tab" aria-selected={activeTab === "expense"} className={`expense-tab ${activeTab === "expense" ? "active-expense" : ""}`} onClick={() => { setActiveTab("expense"); setError(""); setNotice(""); }}><ArrowUpRight size={18} />{t.expense}</button>

@@ -1,5 +1,8 @@
 
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { T } from "../data";
 import "./AgricultureBusiness.css";
 
@@ -20,6 +23,7 @@ const images = [
 ];
 
 function AgricultureBusiness({ language }) {
+  const navigate = useNavigate();
   const t = T[language] || T.en;
 
   const sections =
@@ -34,6 +38,17 @@ function AgricultureBusiness({ language }) {
 
   return (
     <main className="agriculture-page">
+
+      {/* Back Button */}
+      <button
+        type="button"
+        className="agriculture-back-button"
+        onClick={() => navigate("/business-info")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToBusinessInfo || T.en.backToBusinessInfo}</span>
+      </button>
+
       <div className="agriculture-container">
         <header className="agriculture-header">
           <h1>

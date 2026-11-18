@@ -9,6 +9,48 @@
   font-family: Arial, sans-serif;
 }
 
+
+/* Back to Business Information Button */
+
+.food-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 28px;
+  padding: 11px 17px;
+
+  background: #ffffff;
+  color: #a3306f;
+  border: 1px solid #e9c5d7;
+  border-radius: 10px;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  box-shadow: 0 3px 10px rgba(112, 28, 77, 0.06);
+  transition: all 0.25s ease;
+}
+
+.food-back-button:hover {
+  background: #a3306f;
+  color: #ffffff;
+  border-color: #a3306f;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(163, 48, 111, 0.18);
+}
+
+.food-back-button:focus-visible {
+  outline: 2px solid #a3306f;
+  outline-offset: 3px;
+}
+
+
 .food-container {
   width: 100%;
   max-width: 1050px;

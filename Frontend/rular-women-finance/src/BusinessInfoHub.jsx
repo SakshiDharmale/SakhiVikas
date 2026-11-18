@@ -1,5 +1,7 @@
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { T } from "./data";
 import "./BusinessInfoHub.css";
 
@@ -9,7 +11,6 @@ const businesses = [
   { id: "agriculture", title: "businessAgricultureTitle" },
   { id: "handicraft", title: "businessHandicraftTitle" },
   { id: "village", title: "businessVillageTitle" },
-  { id: "other", title: "businessOtherTitle" },
 ];
 
 export function BusinessInfoHub({ language }) {
@@ -22,6 +23,17 @@ export function BusinessInfoHub({ language }) {
 
   return (
     <main className="business-page">
+
+      {/* Back Button - Outside Business Container */}
+      <button
+        type="button"
+        className="business-dashboard-back"
+        onClick={() => navigate("/dashboard")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToDashboard || "Back to Dashboard"}</span>
+      </button>
+
       <div className="business-container">
         <h1>{t.businessInfoHeading}</h1>
 
@@ -44,7 +56,6 @@ export function BusinessInfoHub({ language }) {
               <span className="business-option-title">
                 {t[business.title]}
               </span>
-
             </button>
           ))}
         </div>

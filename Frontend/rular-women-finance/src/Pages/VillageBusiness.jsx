@@ -1,4 +1,7 @@
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { T } from "../data";
 import "./VillageBusiness.css";
 
@@ -19,11 +22,21 @@ const images = [
 ];
 
 function VillageBusiness({ language }) {
+  const navigate = useNavigate();
   const t = T[language] || T.en;
   const sections = t.villageSections || T.en.villageSections;
 
   return (
     <main className="village-page">
+      <button
+        type="button"
+        className="village-back-button"
+        onClick={() => navigate("/business-info")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToBusinessInfo || T.en.backToBusinessInfo}</span>
+      </button>
+
       <div className="village-container">
         <header className="village-header">
           <h1>

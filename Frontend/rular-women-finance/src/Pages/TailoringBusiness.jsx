@@ -1,13 +1,15 @@
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { T } from "../data";
 import "./TailoringBusiness.css";
 import tailor1 from "../assets/tailor1.png";
-import tailor2 from "../assets/tailor2.png"
-import tailor3 from "../assets/tailor3.png"
-import tailor4 from "../assets/tailor4.png"
-import tailor5 from "../assets/tailor5.png"
-import tailor6 from "../assets/tailor6.png"
+import tailor2 from "../assets/tailor2.png";
+import tailor3 from "../assets/tailor3.png";
+import tailor4 from "../assets/tailor4.png";
+import tailor5 from "../assets/tailor5.png";
+import tailor6 from "../assets/tailor6.png";
 
 const images = [
   tailor1,
@@ -25,8 +27,16 @@ function TailoringBusiness({ language }) {
 
   return (
     <main className="tailoring-page">
-      <div className="tailoring-container">
+      <button
+        type="button"
+        className="tailoring-back-button"
+        onClick={() => navigate("/business-info")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToBusinessInfo || T.en.backToBusinessInfo}</span>
+      </button>
 
+      <div className="tailoring-container">
         <header className="tailoring-header">
           <h1>{t.businessTailoringTitle || "Tailoring Business"}</h1>
           <p>

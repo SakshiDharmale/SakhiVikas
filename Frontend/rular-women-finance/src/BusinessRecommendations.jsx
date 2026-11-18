@@ -3,6 +3,53 @@ import { Lightbulb } from "lucide-react";
 import { T } from "./data";
 import "./BusinessRecommendations.css";
 
+const modelOutputTranslations = {
+  hi: {
+    businesses: {
+      "Dairy Farming": "डेयरी फार्मिंग", "Goat Farming": "बकरी पालन", "Poultry Farming": "मुर्गी पालन",
+      "Mushroom Farming": "मशरूम की खेती", "Vegetable Farming": "सब्ज़ी की खेती", "Papad Making": "पापड़ बनाना",
+      "Pickle Making": "अचार बनाना", "Homemade Snacks": "घर के बने नाश्ते", "Tiffin Service": "टिफिन सेवा",
+      Tailoring: "सिलाई", Embroidery: "कढ़ाई", "Beauty Service": "ब्यूटी सेवा", "Candle Making": "मोमबत्ती बनाना",
+      "Soap Making": "साबुन बनाना", "Agarbatti Making": "अगरबत्ती बनाना", Nursery: "नर्सरी", "Flower Farming": "फूलों की खेती",
+      "Flour Mill": "आटा चक्की", "Grocery Shop": "किराना दुकान", "Mobile Repair": "मोबाइल मरम्मत", "Computer Service": "कंप्यूटर सेवा",
+      Handicraft: "हस्तशिल्प", "Bamboo Products": "बांस के उत्पाद", "Clothing Reselling": "कपड़ों की बिक्री",
+      "Spice Powder": "मसाला पाउडर", "Millet Products": "मोटे अनाज के उत्पाद", "Goat Feed Production": "बकरी का चारा बनाना",
+      "Milk Products": "दूध के उत्पाद", "Food Stall": "खाने का स्टॉल", "Online Selling": "ऑनलाइन बिक्री",
+    },
+    reasons: {
+      "Your investment fits the estimated investment range.": "आपका निवेश अनुमानित निवेश सीमा में है।",
+      "Your skill matches the required skill.": "आपका कौशल आवश्यक कौशल से मेल खाता है।",
+      "Your available time is sufficient.": "आपके पास पर्याप्त समय उपलब्ध है।",
+      "This business does not require land.": "इस व्यवसाय के लिए जमीन की आवश्यकता नहीं है।",
+      "The dataset indicates high demand.": "आंकड़ों के अनुसार इसकी मांग अधिक है।",
+      "This business was selected based on the model's ranking.": "यह व्यवसाय मॉडल की रैंकिंग के आधार पर चुना गया है।",
+    },
+    empty: "कोई सुझाव नहीं मिला। अपनी जानकारी में बदलाव करके फिर कोशिश करें।",
+  },
+  mr: {
+    businesses: {
+      "Dairy Farming": "दुग्ध व्यवसाय", "Goat Farming": "शेळीपालन", "Poultry Farming": "कुक्कुटपालन",
+      "Mushroom Farming": "अळींबी शेती", "Vegetable Farming": "भाजीपाला शेती", "Papad Making": "पापड बनवणे",
+      "Pickle Making": "लोणचे बनवणे", "Homemade Snacks": "घरगुती फराळ", "Tiffin Service": "डबा सेवा",
+      Tailoring: "शिवणकाम", Embroidery: "भरतकाम", "Beauty Service": "सौंदर्य सेवा", "Candle Making": "मेणबत्ती बनवणे",
+      "Soap Making": "साबण बनवणे", "Agarbatti Making": "अगरबत्ती बनवणे", Nursery: "रोपवाटिका", "Flower Farming": "फुलशेती",
+      "Flour Mill": "पीठ गिरणी", "Grocery Shop": "किराणा दुकान", "Mobile Repair": "मोबाईल दुरुस्ती", "Computer Service": "संगणक सेवा",
+      Handicraft: "हस्तकला", "Bamboo Products": "बांबू उत्पादने", "Clothing Reselling": "कपड्यांची विक्री",
+      "Spice Powder": "मसाला पावडर", "Millet Products": "भरड धान्य उत्पादने", "Goat Feed Production": "शेळीचा चारा उत्पादन",
+      "Milk Products": "दुग्धजन्य पदार्थ", "Food Stall": "खाद्यपदार्थांचा स्टॉल", "Online Selling": "ऑनलाइन विक्री",
+    },
+    reasons: {
+      "Your investment fits the estimated investment range.": "तुमची गुंतवणूक अंदाजित गुंतवणूक मर्यादेत आहे।",
+      "Your skill matches the required skill.": "तुमचे कौशल्य आवश्यक कौशल्याशी जुळते।",
+      "Your available time is sufficient.": "तुमच्याकडे पुरेसा वेळ उपलब्ध आहे।",
+      "This business does not require land.": "या व्यवसायासाठी जमिनीची आवश्यकता नाही।",
+      "The dataset indicates high demand.": "माहितीनुसार या व्यवसायाला जास्त मागणी आहे।",
+      "This business was selected based on the model's ranking.": "हा व्यवसाय मॉडेलच्या क्रमवारीनुसार निवडला आहे।",
+    },
+    empty: "कोणत्याही शिफारसी सापडल्या नाहीत. माहिती बदलून पुन्हा प्रयत्न करा.",
+  },
+};
+
 const BusinessRecommendations = ({ language = "en" }) => {
   const t = T[language] || T.en;
 
@@ -448,11 +495,11 @@ const BusinessRecommendations = ({ language = "en" }) => {
 
           <div className="suggestion-content">
 
-            {suggestion.length === 0 && <p>No recommendations found. Try adjusting your profile.</p>}
+            {suggestion.length === 0 && <p>{outputTranslations?.empty || "No recommendations found. Try adjusting your profile."}</p>}
             {suggestion.map((item) => (
               <section key={item.business}>
-                <h3>{item.business}</h3>
-                <ul>{item.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul>
+              <h3>{outputTranslations?.businesses[item.business] || item.business}</h3>
+              <ul>{(item.reasons || []).map((reason) => <li key={reason}>{outputTranslations?.reasons[reason] || reason}</li>)}</ul>
               </section>
             ))}
 

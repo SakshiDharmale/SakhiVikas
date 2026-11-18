@@ -1,4 +1,7 @@
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { T } from "../data";
 import "./HandicraftBusiness.css";
 
@@ -19,12 +22,22 @@ const images = [
 ];
 
 function HandicraftBusiness({ language }) {
+  const navigate = useNavigate();
   const t = T[language] || T.en;
   const sections =
     t.handicraftSections || T.en.handicraftSections;
 
   return (
     <main className="handicraft-page">
+      <button
+        type="button"
+        className="handicraft-back-button"
+        onClick={() => navigate("/business-info")}
+      >
+        <ArrowLeft size={18} />
+        <span>{t.backToBusinessInfo || T.en.backToBusinessInfo}</span>
+      </button>
+
       <div className="handicraft-container">
         <header className="handicraft-header">
           <h1>

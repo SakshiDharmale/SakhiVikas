@@ -11,6 +11,46 @@
   font-family: playfair;
 }
 
+
+/* Back to Dashboard Button */
+
+.business-dashboard-back {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+
+  background: #ffffff;
+  color: #a3306f;
+  border: 1px solid #e9c5d7;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.25s ease;
+  margin-left: 15px;
+}
+
+.business-dashboard-back:hover {
+   background: #a3306f;
+  color: #ffffff;
+  border-color: #a3306f;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(163, 48, 111, 0.18);
+}
+
+.business-dashboard-back:focus-visible {
+   outline: 2px solid #a3306f;
+  outline-offset: 3px;
+}
+
+
 .business-container {
   width: 100%;
   max-width: 1100px;
