@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { T } from "./data";
 import "./ExpenseTracker.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://sakhivikas.onrender.com";
 const LOCALES = { en: "en-IN", hi: "hi-IN", mr: "mr-IN" };
 const INCOME_CATEGORIES = ["dairy", "farming", "livestock", "poultry", "tailoring", "handicraft", "shop", "food", "other"];
 const EXPENSE_CATEGORIES = ["food", "farming", "livestock", "education", "health", "household", "transport", "business", "loan", "other"];

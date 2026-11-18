@@ -24,19 +24,11 @@ npm install
 npm run dev
 ```
 
-Open the URL Vite prints and visit Business Recommendations after selecting a language. That route shows the recommendation model's own frontend, embedded in the main app. The recommendation frontend sends profile details to the FastAPI `POST /recommend` endpoint and displays the model's ranked businesses and reasons.
+Open the URL Vite prints and visit Business Recommendations after selecting a language. That route uses the recommendation UI inside the main React app and sends profile details to the FastAPI `POST /recommend` endpoint.
 
-The Business Recommendations route embeds the original recommendation model frontend. Start that Vite app in another terminal:
+For local development, copy `.env.example` to `.env` in `Frontend/rular-women-finance` if your APIs use non-default URLs. Start the FastAPI service in another terminal using the commands above; the main frontend calls `http://127.0.0.1:8000` by default.
 
-```powershell
-cd recommendationmodel/frontend
-npm install
-npm run dev -- --port 5174
-```
-
-Its frontend calls the FastAPI service on port 8000. Set `VITE_API_URL=http://127.0.0.1:8000` in `recommendationmodel/frontend/.env` if needed. In the main frontend, `VITE_RECOMMENDATION_FRONTEND_URL` selects the embedded frontend URL (default `http://localhost:5174`).
-
-To change the embedded recommendation frontend URL, copy `.env.example` to `.env` inside `Frontend/rular-women-finance` and edit `VITE_RECOMMENDATION_FRONTEND_URL`. Configure `VITE_API_URL` in `recommendationmodel/frontend/.env` for the recommendation API. For deployment, serve the recommendation frontend and API over HTTPS and allow the API to receive requests from the recommendation frontend origin in `recommendationmodel/api/main.py` CORS settings.
+For Render, deploy the main frontend as one Static Site with root directory `Frontend/rular-women-finance`, build command `npm ci && npm run build`, and publish directory `dist`. Set `VITE_API_BASE_URL` to the Express service URL and `VITE_RECOMMENDATION_API_URL` to the FastAPI service URL in that Static Site's environment settings. Set `ALLOWED_ORIGINS` on the FastAPI service to the main frontend's Render URL, then redeploy the API. Vite environment variables are applied during the frontend build, so redeploy the Static Site after changing them.
 
 ## Run the finance backend
 
@@ -48,4 +40,4 @@ npm start
 
 Configure the existing MySQL and authentication environment variables locally before using finance and login features. The recommendation service runs independently of the finance backend.
 
-Python environments, dependency folders, build output, and local environment configuration should not be uploaded to GitHub. The original recommendation project remains unchanged.
+Python environments, dependency folders, build output, and local environment configuration should not be uploaded to GitHub. The recommendation UI is integrated into the main frontend; `recommendationmodel` contains the API and model files.
