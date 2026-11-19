@@ -153,7 +153,7 @@ export async function generateFinancialadvice(Analytics, language ) {
                 throw error;
             }
 
-            if (attempt === 2) {
+            if (attempt === 1) {
                 console.warn(`${primaryModel} remains unavailable; trying Gemini 3.5 Flash-Lite.`);
                 try {
                     const fallbackResponse = await client.models.generateContent({
