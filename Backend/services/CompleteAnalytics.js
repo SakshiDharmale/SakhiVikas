@@ -7,7 +7,7 @@ import { categorywiseAnalysis } from "./categoriesex.js";
 import { detectCurrentMonthAnomalies } from "./AnomalyDetect.js";
 import { generateFinancialadvice } from "./AIFinanceAdvisor.js";
 
-export async function getCompleteFinancialAnalytics(userId, range = "monthly", language) {
+export async function getFinancialAnalyticsData(userId, range = "monthly") {
     const [financial, spendingPattern, categoryAnalysis, health, anomalies] =
         await Promise.all([
             getFinancialAnalytics(userId, range),
@@ -26,6 +26,10 @@ export async function getCompleteFinancialAnalytics(userId, range = "monthly", l
         anomalies
     };
 
+    return analytics;
+}
+
+export async function getPersonalizedAdvice(analytics, language) {
     let personalizedSuggestions;
     try {
         personalizedSuggestions = await generateFinancialadvice(analytics, language);
@@ -39,5 +43,11 @@ export async function getCompleteFinancialAnalytics(userId, range = "monthly", l
         personalizedSuggestions = unavailableMessages[String(language ?? 'English').toLowerCase()] ?? unavailableMessages.english;
     }
 
+    return personalizedSuggestions;
+}
+
+export async function getCompleteFinancialAnalytics(userId, range = "monthly", language) {
+    const analytics = await getFinancialAnalyticsData(userId, range);
+    const personalizedSuggestions = await getPersonalizedAdvice(analytics, language);
     return { ...analytics, personalizedSuggestions };
 }
