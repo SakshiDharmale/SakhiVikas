@@ -8,7 +8,7 @@ import { financialhealthScore } from '../services/analytics.js';
 import {categorywiseAnalysis,getCategoryGroupAnalysis} from '../services/categoriesex.js';
 import { getCurrentMonthAnomalies } from '../Controller/anomallyController.js';
 import { getFinancialAnalytics } from '../services/analytics.js';
-import {getCompleteFinancialAnalytics} from '../services/CompleteAnalytics.js';
+import {getFinancialAnalyticsData, getPersonalizedAdvice} from '../services/CompleteAnalytics.js';
 
 
 const router = express.Router();
@@ -93,11 +93,7 @@ router.get('/getAlAnalytics', verifytoken, async (req, res) => {
             });
         }
 
-        const requestedLanguage = String(req.query.language ?? "English").trim();
-        const language = ["English", "Hindi", "Marathi"].find(
-            (supported) => supported.toLowerCase() === requestedLanguage.toLowerCase()
-        ) ?? "English";
-        const data = await getCompleteFinancialAnalytics(req.user_id, range, language);
+        const data = await getFinancialAnalyticsData(req.user_id, range);
         return res.status(200).json({ success: true, data });
     } catch (error) {
         console.error("Complete financial analytics error:", error);
@@ -106,6 +102,25 @@ router.get('/getAlAnalytics', verifytoken, async (req, res) => {
             message: "Unable to calculate complete financial analytics",
             error: error.message
         });
+    }
+});
+
+router.post('/getFinancialAdvice', verifytoken, async (req, res) => {
+    try {
+        const analytics = req.body?.analytics;
+        if (!analytics || typeof analytics !== 'object' || Array.isArray(analytics)) {
+            return res.status(400).json({ success: false, message: 'Analytics data is required.' });
+        }
+
+        const requestedLanguage = String(req.body?.language ?? 'English').trim();
+        const language = ['English', 'Hindi', 'Marathi'].find(
+            (supported) => supported.toLowerCase() === requestedLanguage.toLowerCase()
+        ) ?? 'English';
+        const personalizedSuggestions = await getPersonalizedAdvice(analytics, language);
+        return res.status(200).json({ success: true, data: { personalizedSuggestions } });
+    } catch (error) {
+        console.error('Financial advice request failed:', error);
+        return res.status(500).json({ success: false, message: 'Unable to generate financial advice.' });
     }
 });
 
