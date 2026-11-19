@@ -2,11 +2,11 @@ import { useState } from "react";
 import {Eye, EyeOff, ArrowRight} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { T } from "./data";
-import AuthShell from "./components/AuthShell";
-import {TextField,FieldLabel, PrimaryButton,} from "./components/Field";
-import "./components/AuthShell.css";
-import "./components/Field.css";
-import "./Login.css";
+import AuthShell from "./Components/AuthShell";
+import {TextField,FieldLabel, PrimaryButton,} from "./Components/Field";
+import "./Components/AuthShell.css";
+import "./Components/Field.css";
+import "./login.css";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "https://sakhivikas.onrender.com";

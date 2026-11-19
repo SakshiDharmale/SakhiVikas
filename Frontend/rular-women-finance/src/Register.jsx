@@ -6,16 +6,16 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { T } from "./data";
-import AuthShell from "./components/AuthShell";
+import AuthShell from "./Components/AuthShell";
 
 import {
   TextField,
   FieldLabel,
   PrimaryButton,
-} from "./components/Field";
+} from "./Components/Field";
 
-import "./components/AuthShell.css";
-import "./components/Field.css";
+import "./Components/AuthShell.css";
+import "./Components/Field.css";
 import "./Register.css";
 
 const API_BASE_URL =

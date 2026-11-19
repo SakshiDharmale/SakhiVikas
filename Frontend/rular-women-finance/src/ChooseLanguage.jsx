@@ -1,7 +1,7 @@
 {/*import { useEffect } from "react";*/}
 import { useNavigate } from "react-router-dom";
 import {LANGUAGES} from "./data";
-import SakhiMark from "./components/SakhiMark";
+import SakhiMark from "./Components/SakhiMark";
 import "./ChooseLanguage.css";
 import HomeImage from "./assets/home.jpg.png";
 
