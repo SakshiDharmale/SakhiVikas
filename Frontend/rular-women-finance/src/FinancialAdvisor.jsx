@@ -56,7 +56,7 @@ function monthDate(period) {
    BACKEND DATA NORMALIZATION
    Response shape of GET /getAlAnalytics:
    { success, data: { financial, spendingPattern, categoryAnalysis,
-                      financialHealth, personalizedSuggestions, anomalies } }
+                      financialHealth, anomalies } }
 --------------------------------------- */
 function normalizeFinancialData(result) {
   const raw = result?.data || {};
@@ -160,6 +160,7 @@ export default function FinancialAdvisor({ language }) {
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [adviceLoading, setAdviceLoading] = useState(false);
   const [error, setError] = useState("");
   const [tab, setTab] = useState("month");
   const [view, setView] = useState("amount"); // "amount" | "rate"
@@ -217,6 +218,32 @@ export default function FinancialAdvisor({ language }) {
       }
 
       setData(normalizeFinancialData(result));
+      setAdviceLoading(true);
+      void fetch(`${API_BASE_URL}/getFinancialAdvice`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          analytics: result.data,
+          language: backendLanguage(language),
+        }),
+      })
+        .then(async (adviceResponse) => {
+          const adviceResult = await adviceResponse.json();
+          if (!adviceResponse.ok || !adviceResult.success) {
+            throw new Error(adviceResult.message || "Unable to load AI advice.");
+          }
+          setData((current) => current ? {
+            ...current,
+            suggestions: adviceResult.data?.personalizedSuggestions || "",
+          } : current);
+        })
+        .catch((adviceError) => {
+          console.error("Financial advice API error:", adviceError);
+        })
+        .finally(() => setAdviceLoading(false));
     } catch (err) {
       console.error("Financial Advisor API error:", err);
 
@@ -579,7 +606,7 @@ export default function FinancialAdvisor({ language }) {
               <div className="recommendation-list">
                 {!advice ? (
                   <p className="empty-chart">
-                    {L("faNoAdvice", "No advice yet. Add more income and spending to get tips.")}
+                    {adviceLoading ? L("faAdviceLoading", "Preparing your personalized advice...") : L("faNoAdvice", "No advice yet. Add more income and spending to get tips.")}
                   </p>
                 ) : (
                   <article className="recommendation-item fa-advice-card">

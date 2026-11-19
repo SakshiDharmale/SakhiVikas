@@ -1,6 +1,7 @@
 const API_URL = import.meta.env.VITE_RECOMMENDATION_API_URL
   || import.meta.env.VITE_API_URL
   || "http://127.0.0.1:8000";
+const RECOMMENDATION_API_URL = API_URL.replace(/\/$/, "");
 
 const skillIds = {
   Cooking: "cooking",
@@ -31,11 +32,19 @@ export async function getRecommendations(profile) {
     language: profile.language,
   };
 
-  const response = await fetch(`${API_URL}/recommend`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+  let response;
+  try {
+    response = await fetch(`${RECOMMENDATION_API_URL}/recommend`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    const message = error instanceof TypeError
+      ? `Cannot reach the recommendation API at ${RECOMMENDATION_API_URL}. For local development, set VITE_RECOMMENDATION_API_URL in the frontend .env file and restart Vite. For a deployed frontend, set it in the build environment and rebuild.`
+      : error?.message;
+    throw new Error(message || "Could not connect to the recommendation API.");
+  }
 
   let data;
   try {
