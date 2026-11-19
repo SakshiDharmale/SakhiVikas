@@ -141,7 +141,7 @@ export async function generateFinancialadvice(Analytics, language ) {
     ${languageInstruction}
     `;
     const primaryModel = 'gemini-3.6-flash';
-    for (let attempt = 0; attempt < 3; attempt += 1) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
         try {
             const response = await client.models.generateContent({
                 model: primaryModel,
@@ -157,7 +157,7 @@ export async function generateFinancialadvice(Analytics, language ) {
                 console.warn(`${primaryModel} remains unavailable; trying Gemini 3.5 Flash-Lite.`);
                 try {
                     const fallbackResponse = await client.models.generateContent({
-                        model: 'gemini-3.6-flash-lite',
+                        model: 'gemini-3.5-flash-lite',
                         contents: prompt
                     });
                     return fallbackResponse.text;
